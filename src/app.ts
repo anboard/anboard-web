@@ -12,7 +12,17 @@ app.use(express.static(path.join(__dirname, 'public')))
 console.log(__dirname)
 
 app.get('/', (req: Request, res: Response) => {
-    res.render('index', { artist: 'Kendrick Lamar'})
+    res.render('index', { artist: 'Yekeen Nasir'})
 })
+
+app.get('/about', (req: Request, res: Response) => {
+    res.send('this is about page')
+})
+
+app.get('/contact', (req: Request, res: Response) => {
+    res.send('this is contact page')
+})
+
+app.get('/')
 
 export default app
