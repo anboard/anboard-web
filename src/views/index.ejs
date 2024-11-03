@@ -1,15 +1,244 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/css/styles.css">
-    <script src="/js/index.js" defer></script>
-</head>
+<%- include('partials/head') %>
+<%- include('partials/header') %>
 <body>
+    <section class="section1">
+        <div>
+            <div>
+                <span>Connecting You to Nigeria's Best Voice in Broadcasting</span>
+            <p class="note">Discover, Watch, and Listen to Your Favorite Broadcasters. Explore a vibrant world of radio and television personalities, exclusive content, and the powerful voices shaping 
+                Nigeria's media landscape.</p>
+            </div>
+            <div class="action">
+                <input type="button" value="Explore broadcasters">
+                <input type="button" value="Become a member">
+            </div>
+        </div>
+    </section>
+    <section class="section2">
+        <div>
+            <h2>Who we are</h2>
+            <p>The Association of Nigerian Broadcasters (ANBROAD) is dedicated to empowering and uniting broadcasting professionals across Nigeria. With a mission to foster collaboration, provide professional development, and represent the interests of broadcasters, ANBROAD is the central hub for the broadcasting community.</p>
+            <button><a href="#">Get Started</a></button>
+        </div>
+        <div>
+            <img src="/pictures/section2.png" alt="ANBROAD group picture">
+        </div>
+    </section>
+    <section class="section3">
+        <div class="section3header">
+            <span>Our Broadcasters</span>
+            <button id="nextButton">
+                <svg width="40" height="40" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="25" cy="25" r="24" stroke="black" stroke-width="2" fill="none" />
+                    <path d="M12 25 H32 M32 25 L26 20 M32 25 L26 30" stroke="black" stroke-width="2" fill="none" />
+                </svg>
+            </button>
+        </div>
+        <div class="carousel">
+            <div class="carousel-track">
+                <div class="card">
+                    <img src="/pictures/carousel1.png" alt="Person 1">
+                    <div class="card-info">
+                        <p>Oladejo Basit <br>
+                           Active manager</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="/pictures/carousel2.png" alt="Yekeen Nasir">
+                    <div class="card-info">
+                        <p>Yekeen Nasir <br> Admin acct.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="/pictures/carousel3.png" alt="Person 2">
+                    <div class="card-info">
+                        <p>Bamidele Barizaa <br>
+                            Tech enthusiast</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="/pictures/carousel4.png" alt="Person 3">
+                    <div class="card-info">
+                        <p>Natalie Camford <br> Computer company</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="/pictures/carousel5.png" alt="Person 4">
+                    <div class="card-info">
+                        <p>Yasir Malik <br>
+                         Video Gamer comp.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="/pictures/carousel1.png" alt="Person 1">
+                    <div class="card-info">
+                        <p>Oladejo Basit <br>
+                        Active manager</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="/pictures/carousel2.png" alt="Yekeen Nasir">
+                    <div class="card-info">
+                        <p>Yekeen Nasir <br>
+                        Admin acct.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="/pictures/carousel3.png" alt="Person 2">
+                    <div class="card-info">
+                        <p>Bamidele Barizaa <br>
+                        Tech enthusiast</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="/pictures/carousel4.png" alt="Person 3">
+                    <div class="card-info">
+                        <p>Natalie Camford <br>
+                        Computer company</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="/pictures/carousel5.png" alt="Person 4">
+                    <div class="card-info">
+                        <p>Yasir Malik <br>
+                        Video Gamer comp.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section4">
+        <h3>Benefits of Membership</h3>
+        <div class="section4-container">
+            <div class="section4-card">
+                <img src="/pictures/section4a.png" alt="Benefit 1">
+                <h4>Exclusive Resources</h4>
+                <p>Access training programs, webinars, and industry insights.</p>
+                <a href="#">Learn More</a>
+            </div>
+            <div class="section4-card">
+                <img src="/pictures/section4b.png" alt="Benefit 2">
+                <h4>Representation</h4>
+                <p>Be part of a collective voice that advocates for broadcasters’ rights and benefits.</p>
+                <a href="#">Learn More</a>
+            </div>
+            <div class="section4-card">
+                <img src="/pictures/section4c.png" alt="Benefit 3">
+                <h4>Workshops & Events</h4>
+                <p>Participate in exclusive workshops and events for members.</p>
+                <a href="#">Learn More</a>
+            </div>
+            <div class="section4-card">
+                <img src="/pictures/section4d.png" alt="Benefit 4">
+                <h4>Career Growth</h4>
+                <p>Enhance your skills through our professional development opportunities.</p>
+                <a href="#">Learn More</a>
+            </div>
+            <div class="section4-card">
+                <img src="/pictures/section4e.png" alt="Benefit 5">
+                <h4>Events & Activities</h4>
+                <p>Participate in annual conferences, meetups, and special initiatives hosted by ANBOARD.</p>
+                <a href="#">Learn More</a>
+            </div>
+            <div class="section4-card">
+                <img src="/pictures/section4f.png" alt="Benefit 6">
+                <h4>Career Opportunities</h4>
+                <p>Be recognized for your contributions and achievements.</p>
+                <a href="#">Learn More</a>
+            </div>
+        </div>
+        <a href="#"><button class="join-button">Become a Member Today</button></a>
+    </section>
+    <section class="section5">
+        <h3>Member Testimonials</h3>
+        <div class="carousel-container">
+            <!-- Carousel wrapper -->
+            <div class="carousel-slide">
+                <!-- Carousel items -->
+                <div class="testimonial">
+                    <img src="/pictures/section5.png" alt="Testimonial Image">
+                    <div>
+                        <span>The Association of Nigerian Broadcasters (ANBROAD) is dedicated to empowering and uniting broadcasting professionals across Nigeria. With a mission to foster collaboration, provide professional development, and represent the interests of broadcasters, ANBROAD is the central hub for the broadcasting community.</span>
+                        <span><b>Shola Ahmed</b><br>COO OF NTA</span>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <img src="/pictures/carousel1.png" alt="Testimonial Image">
+                    <div>
+                        <span>ANBROAD has provided incredible networking opportunities and insights into the industry, helping us stay at the forefront of broadcasting.</span><br>
+                        <span><b>Amina Bello</b><br>Manager at TVC News</span>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <img src="/pictures/carousel3.png" alt="Testimonial Image">
+                    <div>
+                        <span>Through ANBROAD, I have gained professional training and a platform to share ideas with industry leaders across Nigeria.</span><br>
+                        <span><b>John Okafor</b><br>Broadcaster at Channels TV</span>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <img src="/pictures/section5.png" alt="Testimonial Image">
+                    <div>
+                        <span>ANBROAD brings broadcasters together, creating a space to discuss challenges and celebrate successes in Nigerian broadcasting.</span><br>
+                        <span><b>Mary Ekong</b><br>Editor at Wazobia FM</span>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <img src="/pictures/carousel3.png" alt="Testimonial Image">
+                    <div>
+                        <span>Being part of ANBROAD has elevated my understanding of broadcasting and helped my career grow exponentially.</span><br>
+                        <span><b>James Udoh</b><br>Presenter at Radio Nigeria</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Controls -->
+            <button class="carousel-control prev">&#10094;</button>
+            <button class="carousel-control next">&#10095;</button>
+        </div>
+    </section>
+    <section class="section6">
+        <h2>Latest Posts<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 5L15 12L8 19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </h2>
+        <div class="postvid">
+            <div class="contentvid">
+                <video src="/videos/vid1.mp4" controls></video>
+                <h2>Let's Get Political</h2>
+                <p>Join the conversation as we dive into current political issues, explore diverse perspectives, and empower informed engagement!</p>
+                <p>
+                    Posted by Alabi Seun <br>
+                    <time datetime="29/10/2024">29th October 2024</time>
+                </p>
+            </div>
+            <div class="contentvid">
+                <video src="/videos/vid2.mp4" controls></video>
+                <h2>A Win is a Win</h2>
+                <p>Celebrating victories, big or small, and the lessons learned along the way!</p>
+                <p>
+                    Posted by Eno James <br>
+                    <time datetime="29/10/2024">15th October 2024</time>
+                </p>
+            </div>
+        </div>
+        <div class="sectionsmall">
+            <div class="postall"><a href="#"><button>See all Posts</button></a></div>
+        </div>
+    </section>
+
+    <br>
+    <section class="section7">
+        <div>
+            <span>Get involved with ANBOARD today</span>
+            <a href="#"><button>join us now</button></a>
+        </div>
+    </section>
     
-    <h1 class="welcome">hello, new world</h1>
-    <p>by <%= artist %></p>
+    
+    
+    
 </body>
-</html>
+
+<%- include('partials/footer')%>
+
+
