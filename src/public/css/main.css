@@ -51,8 +51,10 @@ body{scroll-snap-type: y mandatory;}
     background-color: var(--brown);
     padding: 15px 30px 15px 30px;
     gap: 5rem;
-    width: clamp(200px, 60%, 305px); /* Responsive button width */
-    height: clamp(45px, 70%, 59px); /* Responsive button height */
+    /* width: clamp(220px, 50%, 290px); /* Responsive button width */
+    /* height: clamp(45px, 70%, 59px); Responsive button height */
+    width: fit-content;
+    height: fit-content;
     border-radius: 30px;
     border: none;
     margin-left: 1rem;
@@ -67,6 +69,7 @@ body{scroll-snap-type: y mandatory;}
 @media (max-width: 768px) {
     .section1 {
         padding-top: 3rem;
+        padding-right: 1rem;
         padding-left: 1rem;
         text-align: center; /* Center align for smaller screens */
     }
@@ -80,18 +83,28 @@ body{scroll-snap-type: y mandatory;}
         width: 100%; /* Full width on smaller screens */
     }
     .action {
+        display: flex;
         flex-direction: column;
         align-items: center;
+        /* background-color: #a46d2d; */
+    }
+    .action > input {
+        height: clamp(45px, 70%, 59px);
+        width: clamp(220px, 50%, 290px);
+
     }
 }
 @media (max-width: 478px) {
-    .action{
-        display: block;
-        padding-left: 6rem;
-    }
+
     .action > input{
         display: block;
         margin: 1rem;
+    }
+    .section1{
+        padding-left: 0rem;
+        text-align: center;
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
 }
 
@@ -107,6 +120,8 @@ body{scroll-snap-type: y mandatory;}
     padding: clamp(1rem, 4vw, 2rem);
     padding-top: clamp(2rem, 5vh, 4rem); /* Adjusts top padding responsively */
     align-items: center;
+    text-align: center;
+    /* justify-content: center; */
 }
 
 .section2 > div:nth-child(1) {
@@ -226,7 +241,8 @@ body{scroll-snap-type: y mandatory;}
 
 .card img {
     width: 100%;
-    height: auto;
+    height: 200px;
+    min-height: 150px;
     border-bottom: 2px solid #203760;
 }
 
@@ -340,14 +356,18 @@ body{scroll-snap-type: y mandatory;}
     padding: clamp(1rem, 2vw, 2rem);
     scroll-snap-align: start;
     height: fit-content;
+    /* text-align: center; */
+    /* justify-content: center; */
 }
 
 .carousel-container {
     position: relative;
     overflow: hidden;
-    max-width: 100%;
-    width: 100%;
-    margin: 0 auto;
+    /* max-width: 100%; */
+    width: 80%;
+    margin-left: 10rem;
+    /* padding-left: 4rem; */
+    /* background-color: #0A89C0; */
 }
 
 .carousel-slide {
@@ -362,11 +382,12 @@ body{scroll-snap-type: y mandatory;}
     padding: 2rem;
     box-sizing: border-box;
     flex-direction: row;
+    justify-content: center;
 }
 
 .testimonial img {
     width: clamp(150px, 20vw, 250px);
-    height: auto;
+    height: 395px;
     object-fit: cover;
     margin-right: 1rem;
     border-radius: 8px;
@@ -411,9 +432,24 @@ body{scroll-snap-type: y mandatory;}
 .carousel-control:hover {
     background-color: rgba(0, 0, 0, 0.8);
 }
-
+@media (max-width: 1332px) {
+    .carousel-container {
+        margin-left: 0rem;
+    }
+    .carousel-container{
+        width: 100%;
+    }
+}
 /* Responsive adjustments for smaller screens */
 @media (max-width: 768px) {
+    .carousel-container{
+        margin-left: 0rem;
+        justify-content: center;
+        text-align: center;
+    }
+    .carousel-container{
+        width: 100%;
+    }
     .testimonial {
         flex-direction: column;
         align-items: center;
@@ -511,17 +547,20 @@ body{scroll-snap-type: y mandatory;}
     .sectionsmall {
         justify-content: center;
     }
+    .sectionsmall div a button{
+        width: 150px;
+        font-size: 1.2rem;
+    }
 }
 
 /* section 7 */
 .section7 {
     scroll-snap-align: start;
-    display: block;
     height: fit-content;
     padding: clamp(2rem, 5vw, 5rem);
     background-color: white;
     color: #203760;
-    width: 89.87%;
+    /* width: 94%; */
 }
 
 .section7 div {
@@ -529,7 +568,7 @@ body{scroll-snap-type: y mandatory;}
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    font-size: clamp(1.5rem, 5vw, 3rem);
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
     text-align: center;
     gap: 1rem;
 }
@@ -570,7 +609,9 @@ body{scroll-snap-type: y mandatory;}
     }
     
     .section7 div a button {
-        width: 70%;
+        width: 150px;
+        font-size: 1.2rem;
+
     }
 }
 
