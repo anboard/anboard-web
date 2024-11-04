@@ -267,6 +267,13 @@ svg:hover {
         width: fit-content;
         height: fit-content;
     }
+    .footer2{
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        gap: 1rem;
+        margin-bottom: -3rem;
+        /* background-color: azure; */
+    }
     .footer3container input[type="text"], .inputsubmit {
         width: 100%;
     }
@@ -308,6 +315,13 @@ svg:hover {
     .footerlast span {
         font-size: 12px;
     }
+}
+@media (max-width: 480px) {
+    .footer2{
+        display: flex;
+        flex-direction: column;
+    }
+    
 }
 /* footer */
 
