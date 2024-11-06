@@ -25,6 +25,12 @@ app.get('/contact', (req: Request, res: Response) => {
 app.get('/members', (req: Request, res: Response) => {
     res.render('members', {title: 'Members'})
 })
+app.get('/login', (req: Request, res: Response) => {
+    res.render('login', {title: 'Log In'})
+})
+app.get('/signup', (req: Request, res: Response) => {
+    res.render('signup', {title: 'Sign Up'})
+})
 
 app.get('/')
 
