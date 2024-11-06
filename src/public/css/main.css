@@ -614,5 +614,15 @@ body{scroll-snap-type: y mandatory;}
 
     }
 }
+/* scroll snap */
+@media (max-width: 805px){
+    html {scroll-snap-type:none;}
+    body{scroll-snap-type:none;}
+    section{
+        scroll-snap-align:initial;
+    }
+}
+/* scroll snap */
+
 
 /* index page */
