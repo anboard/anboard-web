@@ -1,11 +1,63 @@
-function toggleMenu() {
-    const menuToggle = document.querySelector('.menu-toggle');
-    const anbContain1 = document.querySelector('.anbcontain1');
-    const anbContain2 = document.querySelector('.anbcontain2');
-    menuToggle.classList.toggle('active');
-    anbContain1.classList.toggle('active');
-    anbContain2.classList.toggle('active');
-}
+// header toggle
+  function toggleMenu() {
+    const navWrapper = document.querySelector('.nav-wrapper');
+    const openIcon = document.querySelector('.menu-toggle .open-icon');
+    const closeIcon = document.querySelector('.menu-toggle .close-icon');
+    navWrapper.classList.toggle('active');
+    openIcon.style.display = openIcon.style.display === 'none' ? 'inline' : 'none';
+    closeIcon.style.display = closeIcon.style.display === 'none' ? 'inline' : 'none';
+  }
+
+  function openModal() {
+    document.getElementById('searchModal').style.display = 'block';
+  }
+
+  function closeModal() {
+    document.getElementById('searchModal').style.display = 'none';
+  }
+
+  window.onclick = function(event) {
+    const modal = document.getElementById('searchModal');
+    if (event.target === modal) {
+      modal.style.display = 'none';
+    }
+  }
+
+
+
+
+  
+  // Function to search for a profile
+  async function searchProfile() {
+    const query = document.getElementById('searchInput').value.trim();
+    const resultElement = document.getElementById('searchResult');
+    resultElement.textContent = ''; // Clear previous results
+
+    if (!query) {
+      resultElement.textContent = 'Please enter a name or UPN number to search.';
+      return;
+    }
+
+    try {
+      // Send a request to the server to search for a profile
+      const response = await fetch(`/search-profile?query=${encodeURIComponent(query)}`);
+      const data = await response.json();
+
+      if (response.ok && data.profile) {
+        // Display the profile information if found
+        resultElement.textContent = `Name: ${data.profile.name}, UPN: ${data.profile.upn}`;
+      } else {
+        // Show "Profile not found" if no profile is found
+        resultElement.textContent = 'Profile not found.';
+      }
+    } catch (error) {
+      console.error('Error fetching profile:', error);
+      resultElement.textContent = 'An error occurred. Please try again.';
+    }
+  }
+
+  /* SEARCH MODAL */
+// header about toggle
 
 //index page section3 carousel
 document.addEventListener("DOMContentLoaded", function() {
