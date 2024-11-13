@@ -1,28 +1,64 @@
 <header class="anboardheader">
     <div class="anbcontainer">
-        <img class="anblogo" src="/pictures/logo.png" alt="Logo">
-        <div class="menu-toggle" onclick="toggleMenu()">
-            <span class="open-icon">&#9776;</span>
-            <span class="close-icon">&#10006;</span>
-        </div>
-        <div class="nav-wrapper">
-            <ul class="anbcontain1">
-                <li><a href="#">News</a></li>
-                <li><a href="#">Corporate Partners</a></li>
-                <li><a href="#">Events</a></li>
-                <a href="/login"><button>Member Login</button></a>
+      <img class="anblogo" src="/pictures/logo.png" alt="Logo">
+      <div class="menu-toggle" onclick="toggleMenu()">
+        <span class="open-icon">&#9776;</span>
+        <span class="close-icon" style="display: none;">&#10006;</span>
+      </div>
+      <div class="nav-wrapper">
+        <ul class="anbcontain1">
+          <li><a href="#smallnews">News</a></li>
+          <li><a href="#">Corporate Partners</a></li>
+          <li><a href="#">Events</a></li>
+          <a href="/login"><button>Member Login</button></a>
+        </ul>
+        <ul class="anbcontain2">
+          <li><a href="/">Home</a></li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" href="#">About
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 9l6 6 6-6"/>
+              </svg>
+            </a>
+            <ul id="aboutDropdown" class="dropdown-menu">
+              <li><a href="#smallabout">Who We Are</a></li>
+              <li><a href="#smallbroadcasters">Our Broadcasters</a></li>
+              <li><a href="#">The National Executives</a></li>
+              <li><a href="#">State Governors</a></li>
             </ul>
-            <ul class="anbcontain2">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="#">Membership</a></li>
-                <a href="#"><svg width="30" height="30" viewBox="0 0 23 23" fill="none">
-                    <circle cx="9" cy="9" r="5" stroke="black" stroke-width="2"></circle>
-                    <line x1="13" y1="13" x2="21" y2="21" stroke="black" stroke-width="2"></line>
-                </svg></a>
-                <li><a href="#"><button>Become a member</button></a></li>
+          </li>
+          <li><a href="#">Contact</a></li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" href="#">Membership
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 9l6 6 6-6"/>
+              </svg>
+            </a>
+            <ul id="aboutDropdown" class="dropdown-menu">
+              <li><a href="/members">ANBROAD Members</a></li>
+              <li><a href="#smallmembership">Benefits of Members</a></li>
             </ul>
-        </div>
+          </li>
+          <a href="#" onclick="openModal()">
+            <svg class="search-icon" width="30" height="30" viewBox="0 0 23 23" fill="none">
+              <circle cx="9" cy="9" r="5" stroke="black" stroke-width="2"></circle>
+              <line x1="13" y1="13" x2="21" y2="21" stroke="black" stroke-width="2"></line>
+            </svg>
+          </a>
+          <li><a href="#"><button>Become a member</button></a></li>
+        </ul>
+      </div> 
     </div>
-</header>
+  </header>
+  
+  <!-- Modal -->
+  <div id="searchModal" class="modal">
+    <div class="modal-content">
+      <span class="close-button" onclick="closeModal()">&times;</span>
+      <h2>Search Members</h2>
+      <input type="text" id="searchInput" placeholder="Search by UPN or Name" class="search-input">
+      <button type="button" class="search-button" onclick="searchProfile()">Search</button>
+      <p id="searchResult"></p>
+    </div>
+  </div>
+  
