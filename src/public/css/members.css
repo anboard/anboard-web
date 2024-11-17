@@ -5,6 +5,7 @@
     background-color: white;
     color: #203760;
     margin-top: 0.5rem;
+    scroll-snap-align: start;
 }
 
 .membersMain h1 {
