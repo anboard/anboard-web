@@ -136,3 +136,46 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // indexpage section5 carousel
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const dropdowns = document.querySelectorAll('.dropdown');
+
+  dropdowns.forEach(dropdown => {
+    const toggle = dropdown.querySelector('.dropdown-toggle');
+    const menu = dropdown.querySelector('.dropdown-menu');
+
+    // Click event to toggle dropdown visibility
+    toggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      // Close any other open dropdowns
+      document.querySelectorAll('.dropdown').forEach(d => {
+        if (d !== dropdown) {
+          d.classList.remove('active');
+        }
+      });
+      // Toggle the current dropdown
+      dropdown.classList.toggle('active');
+    });
+
+    // Optional: Hover events to show/hide dropdown (works for larger screens)
+    dropdown.addEventListener('mouseenter', () => {
+      dropdown.classList.add('active');
+    });
+
+    dropdown.addEventListener('mouseleave', () => {
+      dropdown.classList.remove('active');
+    });
+  });
+
+  // Click outside to close dropdowns
+  document.addEventListener('click', (e) => {
+    const isDropdownClick = e.target.closest('.dropdown');
+    if (!isDropdownClick) {
+      dropdowns.forEach(dropdown => dropdown.classList.remove('active'));
+    }
+  });
+});
+
+
