@@ -30,6 +30,7 @@
     cursor: pointer;
     width: clamp(250px, 20vw, 300px);
     margin-bottom: 1rem;
+    height: 300px;
 }
 
 .member-card:hover {
@@ -39,7 +40,6 @@
 .member-card img {
     width: 100%;
     height: 70%;
-    object-fit: cover;
 }
 
 /* Styling for card content */
