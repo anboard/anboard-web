@@ -414,6 +414,10 @@ footer {
     font-size: clamp(14px, 2vw + 1rem, 18px);
     row-gap: 0.5rem;
 }
+.footer2 li a{
+    color: white;
+    text-decoration: none;
+}
 
 .footer3 {
     font-size: clamp(14px, 2vw + 1rem, 18px);

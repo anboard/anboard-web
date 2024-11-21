@@ -1,0 +1,31 @@
+.contactmain1{
+    color: white;
+    background-image: url("/pictures/connect.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+    height: 65vh;
+    zoom: 1.05;
+    margin-top: -1.5rem;
+}
+.cntoverlay{
+    background-color: rgba(0, 0, 0, 0.8);
+    padding-top: 10rem;
+    padding-left: 7rem;
+    height: 100%;
+}
+.contactmain2{
+    background-color: #E9EBEF;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #203760;
+    padding-top: 3rem;
+    padding-bottom:3rem ;
+}
+.contactmain2 div {
+    color: #203760;
+    text-align: center;
+    width: 80%;
+}
