@@ -36,7 +36,7 @@
   padding: 0 1rem; /* Add some padding for smaller screens */
 }
 
-/* Media Queries for Responsiveness */
+/* Media Queries for Responsiveness */ 
 @media (max-width: 768px) {
   .contactmain1 {
     height: 50vh; /* Adjust height for smaller devices */
