@@ -1,20 +1,66 @@
-.contactmain1{
-    color: white;
-    background-image: url("/pictures/connect.jpeg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: bottom;
-    height: 65vh;
-    zoom: 1.05;
-    margin-top: -1.5rem;
+.contactmain1 {
+  position: relative; /* Make this container the parent of the overlay */
+  color: white;
+  background-image: url("/pictures/connect.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center; /* Ensure the background stays centered */
+  height: 65vh; /* Sets a proper height for the container */
+  margin: 0; /* Remove any unintended margins */
+  padding: 0;
+  overflow: hidden; /* Prevent the overlay from overflowing */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.cntoverlay{
-    background-color: rgba(0, 0, 0, 0.8);
-    padding-top: 10rem;
-    padding-left: 7rem;
-    height: 100%;
+
+/* Overlay styling */
+.cntoverlay {
+  position: absolute; /* Position it relative to the parent */
+  top: 0;
+  left: 0;
+  width: 100%; /* Ensure it spans the full width of the parent */
+  height: 100%; /* Ensure it spans the full height of the parent */
+  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent overlay */
+  display: flex; /* Center content inside the overlay */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
+
+.cntoverlay h1 {
+  font-size: clamp(1.8rem, 4vw, 3.5rem); /* Responsive font size */
+  color: white;
+  margin: 0; /* Remove any unnecessary margins */
+  text-align: center; /* Ensure the text stays centered */
+  padding: 0 1rem; /* Add some padding for smaller screens */
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .contactmain1 {
+    height: 50vh; /* Adjust height for smaller devices */
+  }
+
+  .cntoverlay h1 {
+    font-size: clamp(1.5rem, 3.5vw, 2.5rem); /* Adjust font size */
+  }
+}
+
+@media (max-width: 480px) {
+  .contactmain1 {
+    height: 40vh; /* Adjust height for very small devices */
+  }
+
+  .cntoverlay h1 {
+    font-size: clamp(1.2rem, 3vw, 2rem); /* Smaller font for very small screens */
+    padding: 0 0.5rem; /* Increase padding for smaller screens */
+  }
+}
+
+
 .contactmain2{
+    scroll-snap-align: start;
     background-color: #E9EBEF;
     text-align: center;
     display: flex;
@@ -30,12 +76,165 @@
     width: 80%;
 }
 
+/* general inquiries */
+.contactg {
+  scroll-snap-align: start;
+  /* background-color: white; */
+  color: #203760;
+  margin: 0 auto;
+  padding: clamp(1rem, 2vw, 2.5rem);
+  display: flex; /* Use Flexbox for centering */
+  flex-direction: column;
+  align-items: center; /* Center content horizontally */
+  justify-content: center; /* Center content vertically */
+  height: fit-content; /* Ensures the form spans the full viewport height */
+  box-sizing: border-box; /* Prevents padding from breaking the layout */
+}
+
+/* Header Style */
+.contactg h2 {
+  font-size: clamp(1.8rem, 2.5vw, 3rem);
+  margin-bottom: 2rem;
+  color: #ffffff;
+  text-align: center; /* Centers the text */
+}
+
+/* Form Grid Container */
+.contactgformgrid {
+  /* border: #0184c2 solid 3px; */
+  /* background-color: #adadad; */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem; /* Space between form fields */
+  width: clamp(280px, 65%, 600px); /* Dynamically adjust width */
+  margin: 0 auto;
+  justify-items: center; /* Center grid items horizontally */
+}
+
+/* Input Labels */
+.contactgformgrid p {
+  color: #ffffff;
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  margin-bottom: 0.5rem;
+}
+
+/* Input Fields */
+.contactgformgrid input,
+.contactg5 textarea {
+  width: 100%; /* Make inputs take up the full width of their container */
+  max-width: 100%; /* Set max-width for smaller screens */
+  padding: 0.75rem;
+  border-radius: 15px;
+  border: 1px solid #0e192e;
+  font-size: clamp(0.9rem, 1vw, 1rem);
+  box-sizing: border-box; /* Prevent padding from breaking layout */
+}
+
+.contactg5 textarea {
+  height: 150px; /* Adjusted for more space */
+}
+
+/* Textarea Style */
+.contactg5 {
+  grid-column: span 2; /* Spans full width for larger screens */
+  width: 100%; /* Ensures textarea aligns with the grid */
+}
+
+.contactg5 textarea {
+  width: 100%;
+  height: 150px;
+  border-radius: 15px;
+  border: 1px solid #192e52;
+  resize: none; /* Disable manual resizing */
+  font-size: clamp(0.9rem, 1vw, 1rem);
+}
+
+/* Submit Button */
+.contactgformgrid button {
+  grid-column: span 2; /* Span full width in the grid */
+  text-align: center;
+  width: clamp(120px, 40%, 200px); /* Dynamically adjusts width */
+  height: 50px;
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  margin: 1rem auto;
+  border-radius: 30px;
+  border: none;
+  color: white;
+  background-color: #01ACF0;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.contactgformgrid button:hover {
+  background-color: #0184c2;
+  transform: scale(1.05); /* Slight scaling effect on hover */
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 904px) {
+  .contactg {
+    padding: 1.5rem;
+  }
+
+  .contactg h2 {
+    font-size: clamp(1.5rem, 2.5vw, 2.2rem); /* Slightly smaller font for headers */
+  }
+
+  .contactgformgrid {
+    grid-template-columns: 1fr 1fr; 
+    gap: 1.5rem; 
+  }
+
+  /* .contactg5 {
+    grid-column: 1;   
+  } */
+
+  .contactgformgrid button {
+    width: 100%; /* Make the button span full width */
+  }
+}
+
+/* Responsive Design for Very Small Screens (Below 480px) */
+@media (max-width: 480px) {
+  .contactg {
+    padding: 1rem;
+    min-height: auto; /* Removes full viewport height constraint */
+  }
+
+  .contactg h2 {
+    font-size: clamp(1.4rem, 2.5vw, 1.8rem); /* Adjust header size further */
+  }
+
+  .contactgformgrid p {
+    font-size: clamp(0.9rem, 2vw, 1rem); /* Smaller font size for labels */
+  }
+
+  .contactgformgrid input,
+  .contactg5 textarea {
+    width: 100%; /* Make inputs span full width */
+    font-size: clamp(0.8rem, 2vw, 1rem); /* Smaller font size for inputs */
+  }
+
+  .contactgformgrid button {
+    width: 100%; /* Full-width buttons for small devices */
+    font-size: clamp(1rem, 3vw, 1.2rem); /* Adjust button font size */
+    height: 50px; /* Slightly taller button */
+  }
+}
+
+
+
+
+/* general inquiries */
+
 /* contact map */
 /* Contact Map Section */
 .contact-map {
+  padding-top: 2rem;
     background-color: #f9f9f9;
     text-align: center;
     scroll-snap-align: start;
+    /* height: 500px; */
   }
   
   .map-header h2 {
