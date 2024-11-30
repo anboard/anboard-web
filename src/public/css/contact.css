@@ -1,20 +1,17 @@
 .contactmain1 {
-  position: relative; /* Make this container the parent of the overlay */
+  position: relative; /* Ensures the overlay is contained within this container */
   color: white;
   background-image: url("/pictures/connect.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center; /* Ensure the background stays centered */
-  height: 65vh; /* Sets a proper height for the container */
-  margin: 0; /* Remove any unintended margins */
+  background-position: center;
+  height: 65vh; /* Set a proper height */
+  margin: 0;
   padding: 0;
-  overflow: hidden; /* Prevent the overlay from overflowing */
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  overflow: hidden; /* Prevent overlay from exceeding its bounds */
+  z-index: 1; /* Ensure it stays below the header/dropdowns */
 }
 
-/* Overlay styling */
 .cntoverlay {
   position: absolute; /* Position it relative to the parent */
   top: 0;
@@ -26,15 +23,18 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  pointer-events: none; /* Prevent clicks from interfering */
+  z-index: -1; /* Push the overlay below other elements like the dropdowns */
 }
 
 .cntoverlay h1 {
   font-size: clamp(1.8rem, 4vw, 3.5rem); /* Responsive font size */
   color: white;
-  margin: 0; /* Remove any unnecessary margins */
-  text-align: center; /* Ensure the text stays centered */
+  margin: 0; /* Remove unnecessary margins */
+  text-align: center; /* Ensure text stays centered */
   padding: 0 1rem; /* Add some padding for smaller screens */
 }
+
 
 /* Media Queries for Responsiveness */ 
 @media (max-width: 768px) {

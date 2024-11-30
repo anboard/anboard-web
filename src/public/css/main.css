@@ -13,7 +13,7 @@ body{scroll-snap-type: y mandatory;}
     background-repeat: no-repeat;
     background-size: cover;
     /* width: 100%; */
-    height: 80.54vh;
+    height: fit-content;
     color: var(--white);
     padding-top: clamp(2rem, 6vh, 9rem); /* Responsive padding for smaller screens */
     padding-left: clamp(1rem, 4vw, 4rem); /* Responsive padding for smaller screens */

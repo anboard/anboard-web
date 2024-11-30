@@ -1,12 +1,88 @@
 // header toggle
-  function toggleMenu() {
-    const navWrapper = document.querySelector('.nav-wrapper');
-    const openIcon = document.querySelector('.menu-toggle .open-icon');
-    const closeIcon = document.querySelector('.menu-toggle .close-icon');
-    navWrapper.classList.toggle('active');
-    openIcon.style.display = openIcon.style.display === 'none' ? 'inline' : 'none';
-    closeIcon.style.display = closeIcon.style.display === 'none' ? 'inline' : 'none';
+function toggleMenu() {
+  const navMenu = document.getElementById("navMenu");
+  const menuToggle = document.querySelector(".menu-toggle");
+  const openIcon = menuToggle.querySelector(".open-icon");
+  const closeIcon = menuToggle.querySelector(".close-icon");
+
+  if (navMenu.classList.contains("active")) {
+    navMenu.classList.remove("active");
+    openIcon.style.display = "inline";
+    closeIcon.style.display = "none";
+  } else {
+    navMenu.classList.add("active");
+    openIcon.style.display = "none";
+    closeIcon.style.display = "inline";
   }
+}
+
+// Toggles dropdown menu visibility on click
+function toggleDropdown(dropdownId) {
+  const dropdown = document.getElementById(dropdownId);
+
+  // Close any other open dropdowns
+  document.querySelectorAll('.dropdown-menu').forEach(menu => {
+    if (menu !== dropdown) {
+      menu.classList.remove('show');
+    }
+  });
+
+  // Toggle the selected dropdown
+  dropdown.classList.toggle('show');
+}
+
+// Closes all dropdowns when clicking outside
+document.addEventListener('click', (event) => {
+  const isDropdown = event.target.closest('.dropdown');
+  const isDropdownMenu = event.target.closest('.dropdown-menu');
+
+  if (!isDropdown && !isDropdownMenu) {
+    document.querySelectorAll('.dropdown-menu').forEach(menu => {
+      menu.classList.remove('show');
+    });
+  }
+});
+
+
+
+
+function toggleMenu() {
+  const navMenu = document.getElementById("navMenu");
+  const menuToggle = document.querySelector(".menu-toggle");
+  const openIcon = menuToggle.querySelector(".open-icon");
+  const closeIcon = menuToggle.querySelector(".close-icon");
+
+  navMenu.classList.toggle("active");
+
+  // Show/hide menu icons
+  if (navMenu.classList.contains("active")) {
+    openIcon.style.display = "none";
+    closeIcon.style.display = "block";
+  } else {
+    openIcon.style.display = "block";
+    closeIcon.style.display = "none";
+  }
+}
+
+// Close menu when clicking outside
+window.addEventListener("click", (e) => {
+  const navMenu = document.getElementById("navMenu");
+  const menuToggle = document.querySelector(".menu-toggle");
+
+  if (!navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+    navMenu.classList.remove("active");
+    menuToggle.querySelector(".open-icon").style.display = "block";
+    menuToggle.querySelector(".close-icon").style.display = "none";
+  }
+});
+
+
+
+
+
+
+
+
 
   function openModal() {
     document.getElementById('searchModal').style.display = 'block';

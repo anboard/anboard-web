@@ -1,55 +1,73 @@
 <header class="anboardheader">
-    <div class="anbcontainer">
+  <div class="anbcontainer">
       <img class="anblogo" src="/pictures/logo.png" alt="Logo">
-      <div class="menu-toggle" onclick="toggleMenu()">
-        <span class="open-icon">&#9776;</span>
-        <span class="close-icon" style="display: none;">&#10006;</span>
-      </div>
-      <div class="nav-wrapper">
-        <ul class="anbcontain1">
-          <li><a href="#smallnews">News</a></li>
-          <li><a href="#">Corporate Partners</a></li>
-          <li><a href="#">Events</a></li>
-          <a href="/login"><button>Member Login</button></a>
-        </ul>
-        <ul class="anbcontain2">
-          <li><a href="/">Home</a></li>
-          <li class="dropdown">
-            <a class="dropdown-toggle" href="#">About
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M6 9l6 6 6-6"/>
-              </svg>
-            </a>
-            <ul class="dropdown-menu">
-              <li><a href="#smallabout">Who We Are</a></li>
-              <li><a href="#smallbroadcasters">Our Leaders</a></li>
-              <li><a href="#">The National Executives</a></li>
-              <li><a href="#">State Governors</a></li>
-            </ul>
-          </li>
-          <li><a href="/contact">Contact</a></li>
-          <li class="dropdown">
-            <a class="dropdown-toggle" href="#">Membership
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M6 9l6 6 6-6"/>
-              </svg>
-            </a>
-            <ul class="dropdown-menu">
-              <li><a href="/members">ANBROAD Members</a></li>
-              <li><a href="#smallmembership">Benefits of Members</a></li>
-            </ul>
-          </li>
-          <a href="#" onclick="openModal()">
-            <svg class="search-icon" width="30" height="30" viewBox="0 0 23 23" fill="none">
-              <circle cx="9" cy="9" r="5" stroke="black" stroke-width="2"></circle>
-              <line x1="13" y1="13" x2="21" y2="21" stroke="black" stroke-width="2"></line>
+      
+      <div class="seamber">
+          <a href="/login"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="26" fill="currentColor" class="bi bi-person-fill-lock" viewBox="0 0 16 16">
+            <path d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0m-9 8c0 1 1 1 1 1h5v-1a2 2 0 0 1 .01-.2 4.49 4.49 0 0 1 1.534-3.693Q8.844 9.002 8 9c-5 0-6 3-6 4m7 0a1 1 0 0 1 1-1v-1a2 2 0 1 1 4 0v1a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1zm3-3a1 1 0 0 0-1 1v1h2v-1a1 1 0 0 0-1-1"/>
+          </svg></a>
+          <a class="sicon" href="#" onclick="openModal()">
+            <svg class="searm-icon" width="28" height="29" viewBox="0 0 23 23" fill="none">
+                <circle cx="9" cy="9" r="5" stroke="black" stroke-width="2"></circle>
+                <line x1="12" y1="12" x2="20" y2="20" stroke="black" stroke-width="2"></line>
             </svg>
-          </a>
-          <li><a href="#"><button>Become a member</button></a></li>
-        </ul>
+        </a>
+      </div>
+      <!-- Menu Toggle -->
+      <div class="menu-toggle" onclick="toggleMenu()">
+          <span class="open-icon">&#9776;</span>
+          <span class="close-icon" style="display: none;">&#10006;</span>
+      </div>
+      
+      <div class="nav-wrapper" id="navMenu">
+          <!-- First Navigation List -->
+          <ul class="anbcontain1">
+              <li><a href="#smallnews">News</a></li>
+              <li><a href="#">Corporate Partners</a></li>
+              <li><a href="#">Events</a></li>
+              <a href="/login"><button>Member Login</button></a>
+          </ul>
+          
+          <!-- Second Navigation List -->
+          <ul class="anbcontain2">
+              <li><a href="/">Home</a></li>
+              <li class="dropdown">
+                <a class="dropdown-toggle" href="javascript:void(0);" onclick="toggleDropdown('about-dropdown')">About 
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M6 9l6 6 6-6"/>
+                  </svg>
+              </a>
+                  <ul id="about-dropdown" class="dropdown-menu">
+                      <li><a href="#smallabout">Who We Are</a></li>
+                      <li><a href="#smallbroadcasters">Our Leaders</a></li>
+                      <li><a href="#">The National Executives</a></li>
+                      <li><a href="#">State Governors</a></li>
+                  </ul>
+              </li> 
+              <li><a href="/contact">Contact</a></li>
+              <li class="dropdown">
+                <a class="dropdown-toggle" href="javascript:void(0);" onclick="toggleDropdown('membership-dropdown')">Membership 
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M6 9l6 6 6-6"/>
+                  </svg>
+              </a>
+                  <ul id="membership-dropdown" class="dropdown-menu">
+                      <li><a href="/members">ANBROAD Members</a></li>
+                      <li><a href="#smallmembership">Benefits of Members</a></li>
+                  </ul>
+              </li>
+              <a class="sicon" href="#" onclick="openModal()">
+                  <svg class="search-icon" width="30" height="30" viewBox="0 0 23 23" fill="none">
+                      <circle cx="9" cy="9" r="5" stroke="black" stroke-width="2"></circle>
+                      <line x1="13" y1="13" x2="21" y2="21" stroke="black" stroke-width="2"></line>
+                  </svg>
+              </a>
+              <!-- <li><a href="#"><button>Become a member</button></a></li> -->
+          </ul>
       </div> 
-    </div>
-  </header>
+  </div>
+</header>
+
   
   <!-- Modal -->
   <div id="searchModal" class="modal">
