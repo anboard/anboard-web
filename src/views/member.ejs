@@ -1,0 +1,24 @@
+<%- include('partials/head') %> <%- include('partials/header') %>
+<div class="membersMain">
+  <h1>Meet Our Members</h1>
+  <div class="members-container">
+    <div class="member-card">
+      <img src="<%= member.pfpUrl %>" alt="Broadcaster 1" />
+      <div class="member-info">
+        <span class="member-name"
+          >Name: <%= member.name %></span
+        >
+        <span class="member-upn">UPN Number: <%= member.upn %></span>
+        
+      </div>
+    </div>
+  </div>
+
+  <p> d.o.b: <%= member.date_of_birth %></p>
+        <p> s.o.o: <%= member.state_of_origin %></p>
+        <p> l.g.a: <%= member.local_government %></p>
+        <p> p.h: <%= member.post_held %></p>
+        <p> e.b: <%= member.educational_background %></p>
+</div>
+
+<%- include('partials/footer')%>
