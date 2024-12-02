@@ -1,0 +1,343 @@
+.memberspage{
+    scroll-snap-align: start;
+}
+/* General Styling */
+  
+  /* Member Profile Section */
+  .member_profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    max-width: 900px;
+    margin: 40px auto;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.1); /* Transparent card */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Soft shadow */
+  }
+  
+  /* Member Card */
+  .member_card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    border-radius: 12px;
+    background-color: #152238; /* Slightly lighter blue */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Profile Picture */
+  .member_photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--brown); /* Green accent */
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Member Info Section */
+  .member_info, .stationmember_info {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.08); /* Subtle transparent background */
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .member_info h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: var(--brown); /* Green accent for name */
+  }
+  
+  .member_info p, .stationmember_info p {
+    margin: 5px 0;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #ddd; /* Light gray text */
+  }
+  
+  .stationmember_info ul {
+    margin: 10px 0;
+    padding-left: 20px;
+  }
+  
+  .stationmember_info ul p {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: var(--brown);
+  }
+  
+  .stationmember_info ul li {
+    font-size: 14px;
+    margin: 5px 0;
+    color: #ddd;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .member_profile {
+      max-width: 95%;
+    }
+  
+    .member_photo {
+      width: 120px;
+      height: 120px;
+    }
+  
+    .member_info p, .stationmember_info p {
+      font-size: 13px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .member_photo {
+      width: 100px;
+      height: 100px;
+    }
+  
+    .member_info h2 {
+      font-size: 20px;
+    }
+  
+    .member_info p, .stationmember_info p {
+      font-size: 12px;
+    }
+  }
+
+
+
+/* Content Section */
+.member-content {
+    margin-top: 40px;
+    text-align: center;
+  }
+  
+  /* Toggle Buttons */
+  .toggle-buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  .toggle-button svg {
+    color: #0075a7;
+    fill: #0075a7;
+    margin-right: 0.2rem;
+  }
+  
+  .toggle-button {
+    display: flex;
+    /* background-color: #4CAF50; */
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 10px 20px;
+    border: none;
+    margin: 0 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .toggle-button:hover, .toggle-button svg:hover {
+    /* background-color: #45a049; */
+    color: #0075a7;
+    fill: #0075a7;
+  }
+  
+  .toggle-button.active {
+    background-color: #ffffff;
+    border-radius: 30px;
+    color: #0075a7;
+     /* Active button color */
+  }
+  
+  .toggle-button:focus {
+    outline: none;
+  }
+  
+  /* Media Section */
+  .media-section {
+    margin-top: 20px;
+  } 
+  
+  /* Video Container */
+  .video-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    column-gap: 4rem;
+    padding: 1rem;
+    justify-content: center;
+    /* background-color: #45a049; */
+    box-sizing: border-box;
+    
+  }
+  .videoCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem;
+    width: 250px;
+    /* border: 1px solid #e0e0e0; */
+    border-radius: 8px;
+    background-color:#034663;
+    margin: auto;
+    /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
+  }
+  .thumbnail {
+    width: 100%;
+    height: 150px;
+    background-color: #056188;
+    border-radius: 10px;
+    /* background-color: #4CAF50; */
+  }
+  
+  .content {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0.5rem;
+    /* background-color: #4CAF50; */
+    font-size: 17px;
+    justify-content: space-around;
+  }
+  
+  .content h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0;
+    /* background-color: #4CAF50; */
+    width: fit-content;
+    color: rgb(219, 219, 219);
+  }
+  .content h5{
+    width: fit-content;
+    color: rgb(219, 219, 219);
+  }
+  
+  .content p {
+    font-size: 0.85rem;
+    color: #868686;
+    margin: 0.5rem 0;
+    width: fit-content;
+  }
+
+  
+/* Audio Section */
+.audio-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  column-gap: 4rem;
+  row-gap: 1rem;
+  padding: 1rem;
+  justify-content: center;
+  /* background-color: #ffffff; */
+  box-sizing: border-box;
+  
+}
+.audioCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+  max-width: 250px;
+  min-width: fit-content;
+  margin: auto;
+  width: 100%; /* Full width inside the grid cell */
+  /* border: 1px solid #e0e0e0; */
+  border-radius: 8px;
+  background-color:#034663;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.thumbnailaudio {
+  width: 100%;
+  height: 150px;
+  background-color: #056188;
+  border-radius: 10px;
+  /* background-color: #4CAF50; */
+}
+
+.audiocontent {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.5rem;
+  /* background-color: #4CAF50; */
+  font-size: 17px;
+  /* justify-content: space-around; */
+}
+.audio-contain {
+  position: relative;
+  width: 100%;
+  height: 150px; /* Standardized height for audio containers */
+  border-radius: 10px;
+  background-color: rgb(219, 219, 219); /* Gray background to match design */
+  overflow: hidden; /* Ensure icon stays inside container */
+}
+
+/* Audio Player Styling */
+.thumbnailaudio {
+  width: 100%;
+  height: 100%;
+  background-color: transparent; /* Transparent to see the icon underneath */
+  border-radius: 10px;
+  z-index: 2; /* Ensure audio controls are above the icon */
+  position: absolute;
+}
+
+/* Customizing the Media Controls */
+audio::-webkit-media-controls-panel {
+  background-color: rgb(219, 219, 219); /* Same as background */
+}
+
+audio::-webkit-media-controls-play-button {
+  filter: brightness(0.8);
+}
+
+audio::-webkit-media-controls-timeline {
+  height: 5px;
+  border-radius: 5px;
+}
+
+/* Headphone Icon Styling */
+.audio-icon {
+  position: absolute;
+  top: 40%;
+  /* left: 50%; */
+  transform: translate(-50%, -50%);
+  color: #034663; /* Matches the card background */
+  z-index: 1; /* Behind the audio controls */
+  font-size: 30px; /* Larger for better visibility */
+  opacity: 0.7;
+  pointer-events: none; /* Ensure the icon doesn't block audio controls */
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.AudioCard:hover .audio-icon {
+  transform: translate(-50%, -50%) scale(1.1); /* Slight zoom on hover */
+  opacity: 1;
+}
+
+.audiocontent h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+  /* background-color: #4CAF50; */
+  width: fit-content;
+  color: rgb(219, 219, 219);
+}
+.audiocontent h5{
+  width: fit-content;
+  color: rgb(219, 219, 219);
+}
+
+.audiocontent p {
+  font-size: 0.85rem;
+  color: #868686;
+  margin: 0.5rem 0;
+  width: fit-content;
+}

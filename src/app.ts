@@ -155,10 +155,12 @@ app.get('/member/:upn', async (req: Request, res: Response) => {
 
     if (member)
     member.pfpUrl = photo
+    member.upn = upn
+
 
     res.render('member', {
         title: 'Member',
-        member
+        member, upn
     });
 })
 

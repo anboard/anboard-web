@@ -1,24 +1,210 @@
+<%- include('partials/head') %>
 <%- include('partials/head') %> <%- include('partials/header') %>
-<div class="membersMain">
-  <h1>Meet Our Members</h1>
-  <div class="members-container">
-    <div class="member-card">
-      <img src="<%= member.pfpUrl %>" alt="Broadcaster 1" />
-      <div class="member-info">
-        <span class="member-name"
-          >Name: <%= member.name %></span
-        >
-        <span class="member-upn">UPN Number: <%= member.upn %></span>
-        
+<div class="memberspage">
+<div class="membermain">
+  <div class="member_profile">
+     <!-- Member Card -->
+     <div class="member_card">
+      <img src="<%= member.pfpUrl %>" alt="Member Profile Picture" class="member_photo" />
+      <div class="member_info">
+        <h2><%= member.name %></h2>
+        <p><strong>UPN Number:</strong> <%= member.upn %></p>
+        <p><strong>Date of Birth:</strong> <%= member.date_of_birth %></p>
+        <p><strong>State of Origin:</strong> <%= member.state_of_origin %></p>
+        <p><strong>Local Government Area:</strong> <%= member.local_government %></p>
+        <p><strong>Post Held:</strong> <%= member.post_held %></p>
+        <p><strong>Educational Background:</strong> <%= member.educational_background %></p>
       </div>
+      <div class="stationmember_info">
+        <p><b>Station Name:</b> Techie Radio</p>
+        <p><b>Base Location:</b> Abuja</p>
+        <p><b>Year Started:</b> 2024</p>
+        <p><b>Association Chapter:</b> Anbroad Chapter</p>
+        <ul>
+          <p>Radio Shows:</p>
+          <li>Radio Show 1</li>
+          <li>Radio Show 2</li>
+          <li>Radio Show 3</li>
+        </ul>        
+      </div>
+    </div>
+    </div>
+    </div>
+
+
+    <!-- Content Section -->
+<div class="member-content">
+  <!-- Toggle Buttons -->
+  <div class="toggle-buttons">
+    <span id="video-toggle" class="toggle-button active" onclick="toggleSection('video')">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16"  height="16" class="bi bi-play-circle" viewBox="0 0 16 16">
+        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+        <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445"/>
+      </svg>
+      Videos
+    </span>
+    <span id="audio-toggle" class="toggle-button" onclick="toggleSection('audio')">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-headphones" viewBox="0 0 16 16">
+        <path d="M8 3a5 5 0 0 0-5 5v1h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V8a6 6 0 1 1 12 0v5a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1V8a5 5 0 0 0-5-5"/>
+      </svg>
+      Audios
+    </span>
+  </div>
+  <hr>
+
+  <!-- Video Section -->
+  <div id="video-section" class="media-section">
+    <div class="video-container">
+      <div class="videoCard">
+          <video class="thumbnail" controls>
+            <source src="/videos/vid1.mp4"/>
+          </video>
+        <div class="content">
+          <h3>Techie Radio</h3>
+          <h5>the ends of lfe dead</h5>
+          <p>5days ago</p>
+        </div>
+      </div>
+      <div class="videoCard">
+        <video class="thumbnail" controls>
+          <source src="/videos/vid1.mp4"/>
+        </video>
+        <div class="content">
+          <h3>Techie Radio</h3>
+          <h5>the ends of lfe dead</h5>
+          <p>5days ago</p>
+        </div>
+      </div>
+      <div class="videoCard">
+        <video class="thumbnail" controls>
+          <source src="/videos/vid1.mp4"/>
+        </video>
+        <div class="content">
+          <h3>Techie Radio</h3>
+          <h5>the ends of lfe dead</h5>
+          <p>5days ago</p>
+        </div>
+      </div>
+      <div class="videoCard">
+            <video class="thumbnail" controls>
+              <source src="/videos/vid1.mp4"/>
+            </video>
+          <div class="content">
+            <h3>Techie Radio</h3>
+            <h5>the ends of lfe dead</h5>
+            <p>5days ago</p>
+          </div>
+      </div>
+      <div class="videoCard">
+        <video class="thumbnail" controls>
+          <source src="/videos/vid1.mp4"/>
+        </video>
+      <div class="content">
+        <h3>Techie Radio</h3>
+        <h5>the ends of lfe dead</h5>
+        <p>5days ago</p>
+      </div>
+      </div>
+      
     </div>
   </div>
 
-  <p> d.o.b: <%= member.date_of_birth %></p>
-        <p> s.o.o: <%= member.state_of_origin %></p>
-        <p> l.g.a: <%= member.local_government %></p>
-        <p> p.h: <%= member.post_held %></p>
-        <p> e.b: <%= member.educational_background %></p>
+<!-- Audio Section -->
+<div id="audio-section" class="media-section" style="display: none;">
+  <div class="audio-container">
+    <div class="audioCard">
+      <div class="audio-contain">
+        <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-headphones audio-icon" viewBox="0 0 20 20">
+          <path d="M8 3a5 5 0 0 0-5 5v1h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V8a6 6 0 1 1 12 0v5a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1V8a5 5 0 0 0-5-5" />
+        </svg>
+        <audio class="thumbnailaudio" controls>
+          <source src="/videos/attention.mp3" />
+        </audio>
+      </div>
+      <div class="audiocontent">
+        <h3>Techie Audson</h3>
+        <h5>The Ends of Life Dead</h5>
+        <p>30 hours ago</p>
+      </div>
+    </div>
+ 
+    <div class="audioCard">
+      <div class="audio-contain">
+        <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-headphones audio-icon" viewBox="0 0 20 20">
+          <path d="M8 3a5 5 0 0 0-5 5v1h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V8a6 6 0 1 1 12 0v5a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1V8a5 5 0 0 0-5-5" />
+        </svg>
+        <audio class="thumbnailaudio" controls>
+          <source src="/videos/attention.mp3" />
+        </audio>
+      </div>
+      <div class="audiocontent">
+        <h3>Techie Audson</h3>
+        <h5>The Ends of Life Dead</h5>
+        <p>30 hours ago</p>
+      </div>
+    </div>
+
+    <div class="audioCard">
+      <div class="audio-contain">
+        <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-headphones audio-icon" viewBox="0 0 20 20">
+          <path d="M8 3a5 5 0 0 0-5 5v1h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V8a6 6 0 1 1 12 0v5a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1V8a5 5 0 0 0-5-5" />
+        </svg>
+        <audio class="thumbnailaudio" controls>
+          <source src="/videos/attention.mp3" />
+        </audio>
+      </div>
+      <div class="audiocontent">
+        <h3>Techie Audson</h3>
+        <h5>The Ends of Life Dead</h5>
+        <p>30 hours ago</p>
+      </div>
+    </div>
+
+    <div class="audioCard">
+      <div class="audio-contain">
+        <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-headphones audio-icon" viewBox="0 0 20 20">
+          <path d="M8 3a5 5 0 0 0-5 5v1h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V8a6 6 0 1 1 12 0v5a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1V8a5 5 0 0 0-5-5" />
+        </svg>
+        <audio class="thumbnailaudio" controls>
+          <source src="/videos/attention.mp3" />
+        </audio>
+      </div>
+      <div class="audiocontent">
+        <h3>Techie Audson</h3>
+        <h5>The Ends of Life Dead</h5>
+        <p>30 hours ago</p>
+      </div>
+    </div>
+
+    <div class="audioCard">
+      <div class="audio-contain">
+        <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-headphones audio-icon" viewBox="0 0 20 20">
+          <path d="M8 3a5 5 0 0 0-5 5v1h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V8a6 6 0 1 1 12 0v5a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1V8a5 5 0 0 0-5-5" />
+        </svg>
+        <audio class="thumbnailaudio" controls>
+          <source src="/videos/attention.mp3" />
+        </audio>
+      </div>
+      <div class="audiocontent">
+        <h3>Techie Audson</h3>
+        <h5>The Ends of Life Dead</h5>
+        <p>30 hours ago</p>
+      </div>
+    </div>
+  </div>
 </div>
+
+
+
+
+
+
+</div>
+
+
+
+
+</div>
+
 
 <%- include('partials/footer')%>

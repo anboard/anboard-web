@@ -255,3 +255,26 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+
+// member toggle page section
+function toggleSection(section) {
+  const videoSection = document.getElementById('video-section');
+  const audioSection = document.getElementById('audio-section');
+  
+  const videoButton = document.getElementById('video-toggle');
+  const audioButton = document.getElementById('audio-toggle');
+  
+  if (section === 'video') {
+    videoSection.style.display = 'block';
+    audioSection.style.display = 'none';
+    videoButton.classList.add('active');
+    audioButton.classList.remove('active');
+  } else {
+    videoSection.style.display = 'none';
+    audioSection.style.display = 'block';
+    audioButton.classList.add('active');
+    videoButton.classList.remove('active');
+  }
+}
+
+// member page section

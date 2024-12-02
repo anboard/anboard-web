@@ -13,6 +13,7 @@ body {
     position: relative;
     z-index: 1000; /* Ensures the header is on top of other content */
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    /* position: fixed; */
 }
 
 .anbcontainer {
@@ -121,7 +122,7 @@ body {
     border: 1px solid rgba(0, 0, 0, 0.1); /* Subtle border for definition */
     border-radius: 8px; /* Rounded corners */
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    z-index: 1000; /* Ensure it stays above other content */
+    z-index: 10000; /* Ensure it stays above other content */
     transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth open/close animation */
     opacity: 0; /* Initially invisible */
     transform: translate(-50%, -10px); /* Slight upward shift for animation */
@@ -175,6 +176,10 @@ body {
     align-items: center; /* Align vertically */
     margin-left: auto; /* Push to the right */
     padding-right: 1rem; /* Add spacing from the right */
+}
+.seamber a {
+    color:#203760;
+    fill: #203760;
 }
 
 .searm-icon {
