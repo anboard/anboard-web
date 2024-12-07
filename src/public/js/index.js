@@ -87,7 +87,7 @@ window.addEventListener("click", (e) => {
   
   /* SEARCH MODAL */
 // Fetch user profiles and map photos to profiles
-let userProfiles = []; // Store fetched profiles globally for filtering
+var userProfiles = []; // Store fetched profiles globally for filtering
 
 async function openModal() {
     const modal = document.getElementById('searchModal');
@@ -226,10 +226,8 @@ document.addEventListener("DOMContentLoaded", function() {
     const track = document.querySelector('.carousel-track');
     const nextButton = document.getElementById('nextButton');
 
-    if (!track || !nextButton) {
-        console.error("Carousel elements are not found. Please check your HTML structure.");
-        return;
-    }
+    if (track && nextButton) {
+      console.log("Carousel initialized");
 
     let currentIndex = 0;
     const cards = document.querySelectorAll('.card');
@@ -255,6 +253,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Scroll on button click
     nextButton.addEventListener('click', moveToNextCard);
+  }
 });
 //index page section3 carousel
 
@@ -263,6 +262,8 @@ document.addEventListener("DOMContentLoaded", function() {
 document.addEventListener("DOMContentLoaded", () => {
     const carouselSlide = document.querySelector('.carousel-slide');
     const testimonials = document.querySelectorAll('.testimonial');
+
+    if (carouselSlide && testimonials) {
 
     let currentIndex = 0;
     const slideInterval = 10000; // 10 seconds
@@ -295,6 +296,7 @@ document.addEventListener("DOMContentLoaded", () => {
         currentIndex = (currentIndex + 1) % testimonials.length;
         moveToSlide(currentIndex);
     }, slideInterval);
+    }
 });
 
 // indexpage section5 carousel
@@ -364,3 +366,4 @@ function toggleSection(section) {
 }
 
 // member page section
+console.log(userProfiles, "defined here");
