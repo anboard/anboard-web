@@ -84,56 +84,142 @@ window.addEventListener("click", (e) => {
 
 
 
-  function openModal() {
-    document.getElementById('searchModal').style.display = 'block';
-  }
+  
+  /* SEARCH MODAL */
+// Fetch user profiles and map photos to profiles
+let userProfiles = []; // Store fetched profiles globally for filtering
 
-  function closeModal() {
+async function openModal() {
+    const modal = document.getElementById('searchModal');
+    modal.style.display = 'block';
+
+    if (userProfiles.length === 0) { // Fetch profiles only once
+        try {
+            // Fetch photos
+            const photosResponse = await fetch(`http://localhost:1984/api/anb-broadcaster/web/photo/all`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer a3df4b1e-7c12-4681-9b10-2f8edfdc7a54`
+                }
+            });
+
+            if (!photosResponse.ok) {
+                throw new Error(`Failed to fetch photos: ${photosResponse.statusText}`);
+            }
+
+            const { data: photos } = await photosResponse.json();
+
+            // Fetch profiles
+            const profilesResponse = await fetch(`http://localhost:1984/api/anb-broadcaster/web/profile/all`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer a3df4b1e-7c12-4681-9b10-2f8edfdc7a54`
+                }
+            });
+
+            if (!profilesResponse.ok) {
+                throw new Error(`Failed to fetch profiles: ${profilesResponse.statusText}`);
+            }
+
+            const result = await profilesResponse.json();
+            if (result && result.status === 'success' && Array.isArray(result.data)) {
+                userProfiles = result.data.map(profile => {
+                    // Find matching photo by UPN
+                    const matchingPhoto = photos.find(photo => photo.upn === profile.upn);
+                    return {
+                        ...profile,
+                        pfpUrl: matchingPhoto ? matchingPhoto.photoUrl : '/default-avatar.png' // Default if no photo
+                    };
+                });
+                console.log('Profiles with photos:', userProfiles);
+            } else {
+                console.error('Unexpected profile response structure:', result);
+                alert('Error: Could not fetch user profiles.');
+            }
+        } catch (error) {
+            console.error('Error fetching profiles or photos:', error.message);
+            alert('Error fetching user profiles. Please check your network connection.');
+        }
+    }
+}
+
+
+
+function closeModal() {
     document.getElementById('searchModal').style.display = 'none';
-  }
+}
 
-  window.onclick = function(event) {
+window.onclick = function(event) {
     const modal = document.getElementById('searchModal');
     if (event.target === modal) {
-      modal.style.display = 'none';
+        modal.style.display = 'none';
     }
-  }
+};
 
+// Filter profiles based on input
+function handleInput(event) {
+    const query = event.target.value.trim().toLowerCase();
+    const suggestionsContainer = document.getElementById('suggestions');
+    suggestionsContainer.innerHTML = ''; // Clear previous suggestions
 
+    if (!query) return;
 
+    const filteredProfiles = userProfiles.filter(profile =>
+        profile.name.toLowerCase().includes(query) || profile.upn.toLowerCase().includes(query)
+    );
 
-  
-  // Function to search for a profile
-  async function searchProfile() {
-    const query = document.getElementById('searchInput').value.trim();
-    const resultElement = document.getElementById('searchResult');
-    resultElement.textContent = ''; // Clear previous results
+    if (filteredProfiles.length > 0) {
+        filteredProfiles.forEach(profile => {
+            const suggestion = document.createElement('div');
+            suggestion.classList.add('suggestion');
+            suggestion.innerHTML = `
+                <img src="${profile.pfpUrl || '/default-avatar.png'}" alt="Profile Picture" class="suggestion-img">
+                <div class="suggestion-info">
+                    <p class="suggestion-name">${profile.name}</p>
+                    <p class="suggestion-upn">UPN: ${profile.upn}</p>
+                </div>
+            `;
+            suggestion.onclick = () => {
+                window.location.href = `/member/${profile.upn}`;
+            };
+            suggestionsContainer.appendChild(suggestion);
+        });
+    } else {
+        suggestionsContainer.innerHTML = '<p>Member Not found</p>';
+    }
+}
+
+// Search profile via button (fallback)
+function searchProfile() {
+    const query = document.getElementById('searchInput').value.trim().toLowerCase();
 
     if (!query) {
-      resultElement.textContent = 'Please enter a name or UPN number to search.';
-      return;
+        alert('Please enter a name or UPN number to search.');
+        return;
     }
 
-    try {
-      // Send a request to the server to search for a profile
-      const response = await fetch(`/search-profile?query=${encodeURIComponent(query)}`);
-      const data = await response.json();
+    const matchedProfile = userProfiles.find(profile =>
+        profile.name.toLowerCase() === query || profile.upn.toLowerCase() === query
+    );
 
-      if (response.ok && data.profile) {
-        // Display the profile information if found
-        resultElement.textContent = `Name: ${data.profile.name}, UPN: ${data.profile.upn}`;
-      } else {
-        // Show "Profile not found" if no profile is found
-        resultElement.textContent = 'Profile not found.';
-      }
-    } catch (error) {
-      console.error('Error fetching profile:', error);
-      resultElement.textContent = 'An error occurred. Please try again.';
+    if (matchedProfile) {
+        window.location.href = `/member/${matchedProfile.upn}`;
+    } else {
+        // alert('Profile not found.');
     }
-  }
+}
 
-  /* SEARCH MODAL */
+// Event listener for input field
+document.getElementById('searchInput').addEventListener('input', handleInput);
+                // SEARCH MODAL
 // header about toggle
+
+
+
+
+
 
 //index page section3 carousel
 document.addEventListener("DOMContentLoaded", function() {

@@ -354,6 +354,52 @@ body {
   .search-button:hover {
     background-color: #004494;
   }
+  .suggestions-container {
+    margin-top: 10px;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+}
+
+.suggestion {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    cursor: pointer;
+    border-bottom: 1px solid #ddd;
+}
+
+.suggestion:last-child {
+    border-bottom: none;
+}
+
+.suggestion:hover {
+    background-color: #eee;
+}
+
+.suggestion-img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.suggestion-info {
+    flex-grow: 1;
+}
+
+.suggestion-name {
+    font-weight: bold;
+    font-size: 0.7em;
+}
+
+.suggestion-upn {
+    font-size: 0.5em;
+    color: #666;
+}
+
   
 /* SEARCH MODAL */
 
