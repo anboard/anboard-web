@@ -95,23 +95,8 @@ async function openModal() {
 
     if (userProfiles.length === 0) { // Fetch profiles only once
         try {
-            // Fetch photos
-            const photosResponse = await fetch(`http://localhost:1984/api/anb-broadcaster/web/photo/all`, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer a3df4b1e-7c12-4681-9b10-2f8edfdc7a54`
-                }
-            });
-
-            if (!photosResponse.ok) {
-                throw new Error(`Failed to fetch photos: ${photosResponse.statusText}`);
-            }
-
-            const { data: photos } = await photosResponse.json();
-
             // Fetch profiles
-            const profilesResponse = await fetch(`http://localhost:1984/api/anb-broadcaster/web/profile/all`, {
+            const profilesResponse = await fetch(`http://localhost:1984/api/web/members`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -123,21 +108,8 @@ async function openModal() {
                 throw new Error(`Failed to fetch profiles: ${profilesResponse.statusText}`);
             }
 
-            const result = await profilesResponse.json();
-            if (result && result.status === 'success' && Array.isArray(result.data)) {
-                userProfiles = result.data.map(profile => {
-                    // Find matching photo by UPN
-                    const matchingPhoto = photos.find(photo => photo.upn === profile.upn);
-                    return {
-                        ...profile,
-                        pfpUrl: matchingPhoto ? matchingPhoto.photoUrl : '/default-avatar.png' // Default if no photo
-                    };
-                });
-                console.log('Profiles with photos:', userProfiles);
-            } else {
-                console.error('Unexpected profile response structure:', result);
-                alert('Error: Could not fetch user profiles.');
-            }
+            const {members} = await profilesResponse.json();
+            userProfiles = members;
         } catch (error) {
             console.error('Error fetching profiles or photos:', error.message);
             alert('Error fetching user profiles. Please check your network connection.');
