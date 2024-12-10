@@ -1,20 +1,98 @@
 import express from "express";
 import Router, { Request, Response } from "express";
-import path from "node:path";
+import path, { dirname } from "node:path";
 import config from "./config";
-
+import { client } from "./sanity/client";
+import { FilteredResponseQueryOptions, SanityDocument } from "@sanity/client";
+import cors from 'cors'
 
 const app = express();
+const allowedOrigins = `http://localhost:4423`;
+
+const corsOptions = {
+  origin: function (origin: any, callback: any) {
+    if (allowedOrigins.includes(origin) || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true
+};
+
+app.use(cors(corsOptions))
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
 app.use(express.static(path.join(__dirname, "public")));
 
-console.log(__dirname);
+app.use(
+  ['/events', '/news', '/obrigado'],
+  express.static(path.join(__dirname, '../client/build'), {
+      setHeaders: (res) => {
+        console.log('we all pass through here')
+          res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+      },
+  })
+)
 
-app.get("/", (req: Request, res: Response) => {
-  res.render("index", { title: "Home" });
+app.use(
+ '/obrigado/*',
+  express.static(path.join(__dirname, '../client/build'), {
+      setHeaders: (res) => {
+        console.log('we all pass through here')
+          res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+      },
+  })
+)
+
+app.get('/api/news', async (req: Request, res: Response) => {
+  try {
+    const POSTS_QUERY = `*[
+      _type == "anboard_news"]|order(publishedAt desc)[0...12]{_id, title, image, body, publishedAt}`;
+
+    const options = { next: { revalidate: 30 } };
+
+    const newsList = await client.fetch<SanityDocument[]>(
+      POSTS_QUERY,
+      {},
+      options as unknown as FilteredResponseQueryOptions
+    );
+    // console.log({newsList})
+    res.json({ newsList });
+  } catch (error) {
+    console.error('Error fetching news:', error);
+        res.status(500).send('Error fetching news');
+    return;
+  }
+})
+
+app.get("/", async (req: Request, res: Response) => {
+  try {
+    const POSTS_QUERY = `*[
+      _type == "anboard_news"]|order(publishedAt desc)[0...12]{_id, title, body, publishedAt}`;
+
+    const options = { next: { revalidate: 30 } };
+
+    const newsList = await client.fetch<SanityDocument[]>(
+      POSTS_QUERY,
+      {},
+      options as unknown as FilteredResponseQueryOptions
+    );
+    console.log({newsList})
+    res.render("index", { 
+      title: "Home",
+      newsList
+    });
+  } catch (error) {
+    console.error("Error fetching ANBROAD news:", error);
+    res
+      .status(500)
+      .render("error", { title: "Error", message: "Failed to fetch ANBROAD news" });
+    return;
+  }
+
 });
 
 app.get("/about", (req: Request, res: Response) => {
@@ -25,7 +103,6 @@ app.get("/contact", (req: Request, res: Response) => {
   res.render("contact", { title: "Contact" });
 });
 app.get("/members", async (req: Request, res: Response) => {
-
   try {
     const response = await fetch(`${config.API_BASE_URL}/members`, {
       method: "GET",
@@ -39,12 +116,12 @@ app.get("/members", async (req: Request, res: Response) => {
       throw new Error(`Failed to fetch data: ${response.statusText}`);
     }
     const { members } = await response.json();
-    console.log(members)
-    
-      res.render("members", {
-        title: "Members",
-        members,
-      });
+    console.log(members);
+
+    res.render("members", {
+      title: "Members",
+      members,
+    });
   } catch (error) {
     console.error("Error fetching members:", error);
     res
@@ -52,7 +129,6 @@ app.get("/members", async (req: Request, res: Response) => {
       .render("error", { title: "Error", message: "Failed to fetch members" });
     return;
   }
-
 });
 
 app.get("/member/:upn", async (req: Request, res: Response) => {
@@ -67,7 +143,7 @@ app.get("/member/:upn", async (req: Request, res: Response) => {
       },
     });
 
-    const {memberInfo}  = await response.json();
+    const { memberInfo } = await response.json();
 
     let member = {
       upn: "string",
@@ -77,37 +153,41 @@ app.get("/member/:upn", async (req: Request, res: Response) => {
       local_government: "string",
       post_held: "string",
       educational_background: "string",
-      pfpUrl: "string"
+      pfpUrl: "string",
     };
-        const pfpUrl = memberInfo.pfpUrl
-        const id = memberInfo.id
-        const stationData = memberInfo.stationData
-        const videos = memberInfo.videos
-        const audios = memberInfo.audios
+    const pfpUrl = memberInfo.pfpUrl;
+    const id = memberInfo.id;
+    const stationData = memberInfo.stationData;
+    const videos = memberInfo.videos;
+    const audios = memberInfo.audios;
 
-        console.log(memberInfo)
-    
+    console.log(memberInfo);
+
     res.render("member", {
-        title: "Member",
-        pfpUrl,
-        id,
-        stationData,
-        videos,
-        audios,
-        member: {
-          upn: memberInfo.id.upn || "N/A",
-          name: memberInfo.id.name || "N/A",
-          date_of_birth: memberInfo.id.date_of_birth || "N/A",
-          state_of_origin: memberInfo.id.state_of_origin || "N/A",
-          local_government: memberInfo.id.local_government || "N/A",
-          post_held: memberInfo.id.post_held || "N/A",
-          educational_background: memberInfo.id.educational_background || "N/A",
-          pfpUrl: pfpUrl,
-        },
-        upn,
+      title: "Member",
+      pfpUrl,
+      id,
+      stationData,
+      videos,
+      audios,
+      member: {
+        upn: memberInfo.id.upn || "N/A",
+        name: memberInfo.id.name || "N/A",
+        date_of_birth: memberInfo.id.date_of_birth || "N/A",
+        state_of_origin: memberInfo.id.state_of_origin || "N/A",
+        local_government: memberInfo.id.local_government || "N/A",
+        post_held: memberInfo.id.post_held || "N/A",
+        educational_background: memberInfo.id.educational_background || "N/A",
+        pfpUrl: pfpUrl,
+      },
+      upn,
     });
   } catch (error) {
-    console.log('personal member ERROR: ', error)
+    console.log("personal member ERROR: ", error);
+    res
+      .status(500)
+      .render("error", { title: "Error", message: `Failed to fetch member ${upn}` });
+    return;
   }
 });
 
@@ -118,6 +198,8 @@ app.get("/signup", (req: Request, res: Response) => {
   res.render("signup", { title: "Sign Up" });
 });
 
-app.get("/");
 
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "../client/build/index.html"));
+// });
 export default app;

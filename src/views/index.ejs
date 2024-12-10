@@ -205,8 +205,21 @@
           </svg>
         </h2>
         <div class="postvid">
+
+        <% newsList.map(news => { %>
+
             <div class="contentvid">
-                <video src="/videos/vid1.mp4" controls></video>
+                <!-- <video src="/videos/vid1.mp4" controls></video> -->
+                <h2>Let's Get Political</h2>
+                <p>Join the conversation as we dive into current political issues, explore diverse perspectives, and empower informed engagement!</p>
+                <p>
+                    Posted by Alabi Seun <br>
+                    <time datetime="29/10/2024"><%= news.publishedAt.split('T')[0] %></time>
+                </p>
+            </div>
+        <% }) %>
+            <div class="contentvid">
+                <!-- <video src="/videos/vid1.mp4" controls></video> -->
                 <h2>Let's Get Political</h2>
                 <p>Join the conversation as we dive into current political issues, explore diverse perspectives, and empower informed engagement!</p>
                 <p>
@@ -215,7 +228,7 @@
                 </p>
             </div>
             <div class="contentvid">
-                <video src="/videos/vid2.mp4" controls></video>
+                <!-- <video src="/videos/vid2.mp4" controls></video> -->
                 <h2>A Win is a Win</h2>
                 <p>Celebrating victories, big or small, and the lessons learned along the way!</p>
                 <p>
