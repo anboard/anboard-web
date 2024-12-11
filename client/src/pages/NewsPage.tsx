@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { PortableText } from "@portabletext/react";
 import { urlFor } from "../sanity/client";
+import "../styles/newsList.css";
 
 interface NewsItem {
   _id: string;
   title: string;
+  slug: any;
   body: any;
+  description: string
   publishedAt: string;
   image: any; // Add the image field
 }
@@ -28,21 +31,54 @@ const NewsPage: React.FC = () => {
   console.log(news);
   return (
     <div>
-      <h1>News</h1>
-      {news.map((item) => (
-        <div key={item._id} style={{ marginBottom: "20px" }}>
-          <h2>{item.title}</h2>
-          {item.image && (
-            <img
-              src={urlFor(item.image).width(400).height(300).fit("crop").url()} // Generate the URL
-              alt={item.title}
-              style={{ maxWidth: "100%", height: "auto" }}
-            />
-          )}
-          <PortableText value={item.body} />
-          <small>Published at: {item.publishedAt.split("T")[0]}</small>
+      <div className="banner">
+        <div className="container ">
+          <h1>News</h1>
         </div>
-      ))}
+      </div>
+
+      <div className="news-list container">
+        <h3>Latest News</h3>
+        <div className="news-list-wrapper">
+        {news.map((item) => (
+          <div key={item._id} className="news-card">
+            {item.image ? (
+              <img
+                src={urlFor(item.image)
+                  .width(400)
+                  .height(300)
+                  .fit("crop")
+                  .url()} // Generate the URL
+                alt={item.title}
+                className="news-list-image"
+              />
+            ) : (
+              <img
+                src="/default-image.webp"
+                alt={item.title}
+                className="news-list-image"
+              />
+            )}
+
+            <div className="news-card-text">
+              <div className="card-text-head">
+                <h2 className="news-card-title">{item.title}</h2>
+                <small>Published at: {new Date(item.publishedAt.split("T")[0]).toDateString()}</small>
+              </div>
+
+              <div className="news-card-description">
+                {/* <PortableText value={item.body} /> */}
+                <p>{item.description}</p>
+              </div>
+
+              <div className="news-card-more">
+                <a href={`/news/${item.slug.current}`}>Read more...</a>
+              </div>
+            </div>
+          </div>
+        ))}
+        </div>
+      </div>
     </div>
   );
 };

@@ -50,7 +50,7 @@ app.use(
 app.get('/api/news', async (req: Request, res: Response) => {
   try {
     const POSTS_QUERY = `*[
-      _type == "anboard_news"]|order(publishedAt desc)[0...12]{_id, title, image, body, publishedAt}`;
+      _type == "anboard_news"]|order(publishedAt desc)[0...12]{_id, title, slug, image, description, body, publishedAt}`;
 
     const options = { next: { revalidate: 30 } };
 

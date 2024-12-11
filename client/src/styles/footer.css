@@ -1,0 +1,105 @@
+.footer {
+  background-color: #01acf0;
+  color: white;
+  padding-top: 1rem;
+}
+
+.footer-icon {
+  width: 1.5rem;
+}
+
+.footer-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+}
+
+.footer-nav-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.nav-list-group {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.nav-list-group a {
+    width: 8ch;
+}
+
+.nav-list-group a:hover {
+    color: var(--brown);
+}
+
+.interact {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-evenly;
+    /* gap: 2rem; */
+}
+
+.socials {
+    display: flex;
+    gap: 1rem;
+    align-self: flex-start;
+    justify-content: center;
+    align-items: center;
+}
+
+.newsletter {
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+    margin-top: 3rem;
+}
+
+.newsletter input {
+    width: 100%;
+    border-radius: 10px;
+    border: none;
+    padding: 0.5rem;
+    font-size: 14px;
+}
+
+.newsletter button {
+    background-color: var(--brown);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: .7rem;
+}
+
+.contact-info img {
+    width: 126px;
+    height: 129px;
+}
+
+.contact span:first-of-type {
+    font-weight: 700;
+}
+
+.foot {
+    background-color: #005076;
+    margin-top: 2rem;
+    padding: 0.5rem 1rem;
+}
+
+.foot-wrapper {
+    
+    display: flex;
+    justify-content: space-between;
+}

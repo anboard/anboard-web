@@ -1,0 +1,35 @@
+:root {
+  font-size: 16px;
+  --blue: #00274d;
+  --grey: #d9d9d9;
+  --brown: #c28d3d;
+  --white: white;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.layout {
+  /* background-color: #00274d; */
+  /* color: #fff; */
+  font-family: Arial, sans-serif;
+  /* font-size: clamp(16px, 2vw + 1rem, .9rem); */
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.main-content {
+    padding-top: 9rem;
+}
+
+.container {
+  max-width: 1300px;
+  min-width: none;
+  margin: 0 auto;
+}
