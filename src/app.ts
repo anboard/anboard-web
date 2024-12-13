@@ -4,23 +4,24 @@ import path, { dirname } from "node:path";
 import config from "./config";
 import { client } from "./sanity/client";
 import { FilteredResponseQueryOptions, SanityDocument } from "@sanity/client";
-import cors from 'cors'
+// import cors from 'cors'
+// import { default } from './config';
 
 const app = express();
-const allowedOrigins = `http://localhost:4423`;
+// const allowedOrigins = `http://localhost:4423`;
 
-const corsOptions = {
-  origin: function (origin: any, callback: any) {
-    if (allowedOrigins.includes(origin) || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: true
-};
+// const corsOptions = {
+//   origin: function (origin: any, callback: any) {
+//     if (allowedOrigins.includes(origin) || !origin) {
+//       callback(null, true);
+//     } else {
+//       callback(new Error('Not allowed by CORS'));
+//     }
+//   },
+//   credentials: true
+// };
 
-app.use(cors(corsOptions))
+// app.use(cors(corsOptions))
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -88,7 +89,7 @@ app.get('/api/news/:slug', async (req: Request, res: Response) => {
     return;
   }
 })
-
+const configuration = require('./config').default; // Import the configuration file
 app.get("/", async (req: Request, res: Response) => {
   try {
     const POSTS_QUERY = `*[
@@ -103,8 +104,10 @@ app.get("/", async (req: Request, res: Response) => {
     );
     res.render("index", { 
       title: "Home",
-      newsList
+      newsList,
+      configuration
     });
+  
   } catch (error) {
     console.error("Error fetching ANBROAD news list:", error);
     res
@@ -116,11 +119,11 @@ app.get("/", async (req: Request, res: Response) => {
 });
 
 app.get("/about", (req: Request, res: Response) => {
-  res.render("about", { title: "About" });
+  res.render("about", { title: "About",configuration });
 });
 
 app.get("/contact", (req: Request, res: Response) => {
-  res.render("contact", { title: "Contact" });
+  res.render("contact", { title: "Contact",configuration });
 });
 app.get("/members", async (req: Request, res: Response) => {
   try {
@@ -139,7 +142,7 @@ app.get("/members", async (req: Request, res: Response) => {
 
     res.render("members", {
       title: "Members",
-      members,
+      members,configuration
     });
   } catch (error) {
     console.error("Error fetching members:", error);
@@ -220,4 +223,6 @@ app.get(['/news', '/news/:slug', '/events'], (req, res) => {
   console.log('we get here')
   res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
+
+
 export default app;

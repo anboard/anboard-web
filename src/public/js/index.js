@@ -87,6 +87,7 @@ window.addEventListener("click", (e) => {
   
   /* SEARCH MODAL */
 // Fetch user profiles and map photos to profiles
+// import config from '../config';
 var userProfiles = []; // Store fetched profiles globally for filtering
 
 async function openModal() {
@@ -96,13 +97,14 @@ async function openModal() {
     if (userProfiles.length === 0) { // Fetch profiles only once
         try {
             // Fetch profiles
-            const profilesResponse = await fetch(`http://localhost:1984/api/web/members`, {
+            const profilesResponse = await fetch(`${config.API_BASE_URL}/members`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer a3df4b1e-7c12-4681-9b10-2f8edfdc7a54`
                 }
             });
+            // console/log(config.API_BASE_URL);
 
             if (!profilesResponse.ok) {
                 throw new Error(`Failed to fetch profiles: ${profilesResponse.statusText}`);
