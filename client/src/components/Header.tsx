@@ -97,7 +97,7 @@ const Header: React.FC = () => {
               </ul>
             </div>
           </div>
-          <a href="/contact-us">Contact Us</a>
+          <a href="/contact">Contact Us</a>
           <div
             className="dropdown-wrapper"
             ref={membershipDropdownRef}

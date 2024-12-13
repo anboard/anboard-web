@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "es2016",
+    "module": "commonjs",
+    "esModuleInterop": true,                             
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,                                      
+    "noImplicitAny": true,                            
+    "strictNullChecks": true,                         
+    "strictFunctionTypes": true,                      
+    "skipLibCheck": true,
+    "outDir": "./dist"                      
+  },
+  "include": ["src/**/*", "public", "src/sanity", "server.ts", "config.ts", "app.ts"],
+  "exclude": ["node_modules", "dist"]
+}

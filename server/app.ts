@@ -2,7 +2,7 @@ import express from "express";
 import Router, { Request, Response } from "express";
 import path, { dirname } from "node:path";
 import config from "./config";
-import { client } from "./sanity/client";
+import { client } from "./src/sanity/client";
 import { FilteredResponseQueryOptions, SanityDocument } from "@sanity/client";
 // import cors from 'cors'
 // import { default } from './config';
@@ -27,7 +27,7 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
 app.use(express.static(path.join(__dirname, "public")));
-app.use('/client', express.static(path.join(__dirname, '../client/build')))
+app.use('/client', express.static(path.join(__dirname, 'public/client')))
 // app.use('/events', express.static(path.join(__dirname, '../client/build')))
 
 // app.use(
@@ -221,7 +221,7 @@ app.get("/signup", (req: Request, res: Response) => {
 
 app.get(['/news', '/news/:slug', '/events'], (req, res) => {
   console.log('we get here')
-  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+  res.sendFile(path.join(__dirname, 'public/client/index.html'));
 });
 
 
