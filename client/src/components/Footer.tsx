@@ -6,7 +6,8 @@ const Footer: React.FC = () => {
     <div className="footer">
       <div className="container footer-wrapper">
         <div className="contact-info">
-          <img src="/logo.png" alt="" />
+          <img src="/client/logo.png" alt="" />
+          {/* <img src="/logo.png" alt="" /> */}
           <div className="address contact">
             <span className="footer-contact-title">Address: </span>
             <span>

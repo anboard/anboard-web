@@ -26,31 +26,31 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
 app.use(express.static(path.join(__dirname, "public")));
+app.use('/client', express.static(path.join(__dirname, '../client/build')))
+// app.use('/events', express.static(path.join(__dirname, '../client/build')))
 
-app.use(
-  ['/events', '/news', '/obrigado'],
-  express.static(path.join(__dirname, '../client/build'), {
-      setHeaders: (res) => {
-        console.log('we all pass through here')
-          res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
-      },
-  })
-)
+// app.use(
+//   ['/events', '/news', '/obrigado', '/news/:slug'],
+//   express.static(path.join(__dirname, '../client/build'), {
+//       setHeaders: (res) => {
+//           res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+//       },
+//   })
+// )
 
 app.use(
  '/obrigado/*',
   express.static(path.join(__dirname, '../client/build'), {
       setHeaders: (res) => {
-        console.log('we all pass through here')
           res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
       },
   })
 )
 
-app.get('/api/news', async (req: Request, res: Response) => {
+app.get('/api/newslist', async (req: Request, res: Response) => {
   try {
     const POSTS_QUERY = `*[
-      _type == "anboard_news"]|order(publishedAt desc)[0...12]{_id, title, slug, image, description, body, publishedAt}`;
+      _type == "anboard_news"]|order(publishedAt desc)[0...12]{_id, title, slug, image, description, publishedAt}`;
 
     const options = { next: { revalidate: 30 } };
 
@@ -59,10 +59,31 @@ app.get('/api/news', async (req: Request, res: Response) => {
       {},
       options as unknown as FilteredResponseQueryOptions
     );
-    // console.log({newsList})
     res.json({ newsList });
   } catch (error) {
-    console.error('Error fetching news:', error);
+    console.error('Error fetching news list: ', error);
+        res.status(500).send('Error fetching news');
+    return;
+  }
+})
+
+app.get('/api/news/:slug', async (req: Request, res: Response) => {
+
+  const { slug } = req.params
+  try {
+    const POSTS_QUERY = `*[
+      _type == "anboard_news" && slug.current == "${slug}"]{_id, title, image, description, body, publishedAt}`;
+
+    const options = { next: { revalidate: 30 } };
+
+    const article = await client.fetch<SanityDocument[]>(
+      POSTS_QUERY,
+      {},
+      options as unknown as FilteredResponseQueryOptions
+    );
+    res.json({ article });
+  } catch (error) {
+    console.error('Error fetching news: ', error);
         res.status(500).send('Error fetching news');
     return;
   }
@@ -80,13 +101,12 @@ app.get("/", async (req: Request, res: Response) => {
       {},
       options as unknown as FilteredResponseQueryOptions
     );
-    console.log({newsList})
     res.render("index", { 
       title: "Home",
       newsList
     });
   } catch (error) {
-    console.error("Error fetching ANBROAD news:", error);
+    console.error("Error fetching ANBROAD news list:", error);
     res
       .status(500)
       .render("error", { title: "Error", message: "Failed to fetch ANBROAD news" });
@@ -116,7 +136,6 @@ app.get("/members", async (req: Request, res: Response) => {
       throw new Error(`Failed to fetch data: ${response.statusText}`);
     }
     const { members } = await response.json();
-    console.log(members);
 
     res.render("members", {
       title: "Members",
@@ -161,7 +180,6 @@ app.get("/member/:upn", async (req: Request, res: Response) => {
     const videos = memberInfo.videos;
     const audios = memberInfo.audios;
 
-    console.log(memberInfo);
 
     res.render("member", {
       title: "Member",
@@ -183,7 +201,6 @@ app.get("/member/:upn", async (req: Request, res: Response) => {
       upn,
     });
   } catch (error) {
-    console.log("personal member ERROR: ", error);
     res
       .status(500)
       .render("error", { title: "Error", message: `Failed to fetch member ${upn}` });
@@ -199,7 +216,8 @@ app.get("/signup", (req: Request, res: Response) => {
 });
 
 
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "../client/build/index.html"));
-// });
+app.get(['/news', '/news/:slug', '/events'], (req, res) => {
+  console.log('we get here')
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
 export default app;

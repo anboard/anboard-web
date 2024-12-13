@@ -84,8 +84,8 @@
 }
 
 .contact-info img {
-    width: 126px;
-    height: 129px;
+    width: 100px;
+    height: 100px;
 }
 
 .contact span:first-of-type {
@@ -102,4 +102,15 @@
     
     display: flex;
     justify-content: space-between;
+}
+
+
+@media (max-width: 920px) {
+ .newsletter {
+    flex-direction: column;
+ } 
+
+ .newsletter button {
+    align-self: flex-end;
+ }
 }

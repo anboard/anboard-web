@@ -316,6 +316,10 @@ body {
     max-width: 500px;
     text-align: center;
   }
+
+  .modal-content h2 {
+    margin: 0;
+  }
   
   /* Close button */
   .close-button {
@@ -349,6 +353,7 @@ body {
     color: white;
     border-radius: 4px;
     cursor: pointer;
+    margin-top: 1rem;
   }
   
   .search-button:hover {
@@ -369,6 +374,7 @@ body {
     padding: 1rem;
     cursor: pointer;
     border-bottom: 1px solid #ddd;
+    gap: 1rem;
 }
 
 .suggestion:last-child {
@@ -388,6 +394,14 @@ body {
 
 .suggestion-info {
     flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .3rem;
+}
+
+.suggestion-info p {
+    margin: 0;
 }
 
 .suggestion-name {

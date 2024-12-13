@@ -1,3 +1,5 @@
+
+
 :root {
   font-size: 16px;
   --blue: #00274d;
@@ -25,11 +27,18 @@ a {
 }
 
 .main-content {
-    padding-top: 9rem;
+    padding-top: 6rem;
 }
 
 .container {
+  width: 90vw;
   max-width: 1300px;
+  /* max-width: calc( 2rem + 1vw); */
+  /* max-width: clamp(90vw, 1300px); */
   min-width: none;
   margin: 0 auto;
+}
+
+.hidden {
+  display: none;
 }
