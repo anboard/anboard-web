@@ -1,0 +1,39 @@
+{
+    "name": "anboard-web",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "build": "cd client/ && npx vite build && cp -r build/* ../server/public/client/ && cd ../server/ && npx tsc && cp -r public/ dist/ && cp -r src/views/ dist/",
+      "start": "node server/dist/server.js",
+      "dev": "vite --port 4423"
+    },
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "dependencies": {
+      "@portabletext/react": "^3.2.0",
+      "@sanity/client": "^6.24.1",
+      "@sanity/image-url": "^1.1.0",
+      "@types/react": "^19.0.1",
+      "@types/react-dom": "^19.0.2",
+      "@vitejs/plugin-react": "^4.3.4",
+      "react": "^19.0.0",
+      "react-dom": "^19.0.0",
+      "react-router-dom": "^7.0.2",
+      "vite": "^6.0.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.21.1",
+    "nodemon": "^3.1.7"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.8.7",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3"
+  }
+  }
+  

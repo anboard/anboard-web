@@ -20,8 +20,8 @@ const NewsPage: React.FC = () => {
 
   useEffect(() => {
     const fetchNews = async () => {
-      const response = await fetch(`http://localhost:4422/api/news/${slug}`);
-      // const response = await fetch(`/api/news/${slug}`);
+      // const response = await fetch(`http://localhost:4422/api/news/${slug}`);
+      const response = await fetch(`/api/news/${slug}`);
       const { article } = await response.json();
 
       if (!article) {
