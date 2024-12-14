@@ -17,8 +17,8 @@ const NewsListPage: React.FC = () => {
 
   useEffect(() => {
     const fetchNews = async () => {
-      const response = await fetch("http://localhost:4422/api/newslist");
-      // const response = await fetch("/api/newslist");
+      // const response = await fetch("http://localhost:4422/api/newslist");
+      const response = await fetch("/api/newslist");
       const { newsList } = await response.json();
 
       console.log("smth is fuccing w me");
