@@ -202,6 +202,7 @@ app.get("/member/:upn", async (req: Request, res: Response) => {
         pfpUrl: pfpUrl,
       },
       upn,
+      configuration
     });
   } catch (error) {
     res
