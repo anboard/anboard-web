@@ -141,8 +141,8 @@ function handleInput(event) {
     if (!query) return;
 
     const filteredProfiles = userProfiles.filter(profile => {
-      
-    return profile.name && profile.name.toLowerCase().includes(query) || profile.upn.toLowerCase().includes(query)
+    if (profile.name)  
+    profile.name.toLowerCase().includes(query) || profile.upn.toLowerCase().includes(query)
     });
 
     if (filteredProfiles.length > 0) {
