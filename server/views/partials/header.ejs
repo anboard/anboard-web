@@ -27,7 +27,7 @@
               <li><a href="#">Corporate Partners</a></li>
               <li><a href="/events">Events</a></li>
               <!-- <li><a href="http://localhost:4423/events/">Events</a></li> -->
-              <a href="http://localhost:3000/auth/login"><button>Member Login</button></a>
+              <a href="<%- configuration.APP_LOGIN_URL  %>"><button>Member Login</button></a>
           </ul>
           
           <!-- Second Navigation List -->
@@ -40,8 +40,8 @@
                   </svg>
               </a>
                   <ul id="about-dropdown" class="dropdown-menu">
-                      <li><a href="#smallabout">Who We Are</a></li>
-                      <li><a href="#smallbroadcasters">Our Leaders</a></li>
+                      <li><a href="/#smallabout">Who We Are</a></li>
+                      <li><a href="/#smallbroadcasters">Our Leaders</a></li>
                       <li><a href="#">The National Executives</a></li>
                       <li><a href="#">State Governors</a></li>
                   </ul>
@@ -55,7 +55,7 @@
               </a>
                   <ul id="membership-dropdown" class="dropdown-menu">
                       <li><a href="/members">ANBROAD Members</a></li>
-                      <li><a href="#smallmembership">Benefits of Members</a></li>
+                      <li><a href="/#smallmembership">Benefits of Members</a></li>
                   </ul>
               </li>
               <a class="sicon" href="#" onclick="openModal()">
