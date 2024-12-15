@@ -4,7 +4,7 @@
     "main": "index.js",
     "scripts": {
       "test": "echo \"Error: no test specified\" && exit 1",
-      "build": "cd client/ && npx vite build && cp -r build/* ../server/public/client/ && cd ../server/ && npx tsc && cp -r public/ dist/ && cp -r src/views/ dist/",
+      "build": "cd client/ && npx vite build && cp -r build/* ../server/public/client/ && cd ../server/ && npx tsc && cp -r public/ dist/ && cp -r views/ dist/",
       "start": "node server/dist/server.js",
       "dev": "vite --port 4423"
     },
