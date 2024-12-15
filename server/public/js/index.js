@@ -142,7 +142,7 @@ function handleInput(event) {
 
     const filteredProfiles = userProfiles.filter(profile => {
       
-     profile.name && profile.name.toLowerCase().includes(query) || profile.upn.toLowerCase().includes(query)
+    return profile.name && profile.name.toLowerCase().includes(query) || profile.upn.toLowerCase().includes(query)
     });
 
     if (filteredProfiles.length > 0) {
