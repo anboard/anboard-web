@@ -134,57 +134,60 @@ window.onclick = function(event) {
 
 // Filter profiles based on input
 function handleInput(event) {
-    const query = event.target.value.trim().toLowerCase();
-    const suggestionsContainer = document.getElementById('suggestions');
-    suggestionsContainer.innerHTML = ''; // Clear previous suggestions
+  const query = event.target.value.trim().toLowerCase();
+  const suggestionsContainer = document.getElementById('suggestions');
+  suggestionsContainer.innerHTML = ''; // Clear previous suggestions
 
-    if (!query) return;
+  if (!query) return;
 
-    const filteredProfiles = userProfiles.filter(profile => {
-    if (profile.name)  
-    profile.name.toLowerCase().includes(query) || profile.upn.toLowerCase().includes(query)
-    });
+  const filteredProfiles = userProfiles.filter(profile =>
+      (profile.name && profile.name.toLowerCase().includes(query)) || // Check if name exists and matches
+      (profile.upn && profile.upn.toLowerCase().includes(query))      // Check if UPN matches
+  );
 
-    if (filteredProfiles.length > 0) {
-        filteredProfiles.forEach(profile => {
-            const suggestion = document.createElement('div');
-            suggestion.classList.add('suggestion');
-            suggestion.innerHTML = `
-                <img src="${profile.pfpUrl || '/default-avatar.png'}" alt="Profile Picture" class="suggestion-img">
-                <div class="suggestion-info">
-                    <p class="suggestion-name">${profile.name}</p>
-                    <p class="suggestion-upn">UPN: ${profile.upn}</p>
-                </div>
-            `;
-            suggestion.onclick = () => {
-                window.location.href = `/member/${profile.upn}`;
-            };
-            suggestionsContainer.appendChild(suggestion);
-        });
-    } else {
-        suggestionsContainer.innerHTML = '<p>Member Not found</p>';
-    }
+  if (filteredProfiles.length > 0) {
+      filteredProfiles.forEach(profile => {
+          const suggestion = document.createElement('div');
+          suggestion.classList.add('suggestion');
+          suggestion.innerHTML = `
+              <img src="${profile.pfpUrl || '/default-avatar.png'}" alt="Profile Picture" class="suggestion-img">
+              <div class="suggestion-info">
+                  <p class="suggestion-name">${profile.name || 'No Name Provided'}</p>
+                  <p class="suggestion-upn">UPN: ${profile.upn}</p>
+              </div>
+          `;
+          suggestion.onclick = () => {
+              window.location.href = `/member/${profile.upn}`;
+          };
+          suggestionsContainer.appendChild(suggestion);
+      });
+  } else {
+      suggestionsContainer.innerHTML = '<p>Member Not Found</p>';
+  }
 }
+
 
 // Search profile via button (fallback)
 function searchProfile() {
-    const query = document.getElementById('searchInput').value.trim().toLowerCase();
+  const query = document.getElementById('searchInput').value.trim().toLowerCase();
 
-    if (!query) {
-        alert('Please enter a name or UPN number to search.');
-        return;
-    }
+  if (!query) {
+      alert('Please enter a name or UPN number to search.');
+      return;
+  }
 
-    const matchedProfile = userProfiles.find(profile =>
-        profile.name.toLowerCase() === query || profile.upn.toLowerCase() === query
-    );
+  const matchedProfile = userProfiles.find(profile =>
+      (profile.name && profile.name.toLowerCase() === query) || // Check if name matches
+      (profile.upn && profile.upn.toLowerCase() === query)      // Check if UPN matches
+  );
 
-    if (matchedProfile) {
-        window.location.href = `/member/${matchedProfile.upn}`;
-    } else {
-        // alert('Profile not found.');
-    }
+  if (matchedProfile) {
+      window.location.href = `/member/${matchedProfile.upn}`;
+  } else {
+      alert('Member Not Found.');
+  }
 }
+
 
 // Event listener for input field
 document.getElementById('searchInput').addEventListener('input', handleInput);
