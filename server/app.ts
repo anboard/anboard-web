@@ -205,6 +205,7 @@ app.get("/member/:upn", async (req: Request, res: Response) => {
       configuration
     });
   } catch (error) {
+    console.log('In member/:upn: ', error)
     res
       .status(500)
       .render("error", { title: "Error", message: `Failed to fetch member ${upn}` });
