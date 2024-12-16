@@ -140,10 +140,13 @@ function handleInput(event) {
 
   if (!query) return;
 
-  const filteredProfiles = userProfiles.filter(profile =>
-      (profile.name && profile.name.toLowerCase().includes(query)) || // Check if name exists and matches
-      (profile.upn && profile.upn.toLowerCase().includes(query))      // Check if UPN matches
-  );
+  const filteredProfiles = userProfiles.filter(profile => {
+      nameP = profile.name.trim();
+      return nameP && (
+          profile.name.toLowerCase().includes(query) || 
+          profile.upn.toLowerCase().includes(query)
+      );
+  });
 
   if (filteredProfiles.length > 0) {
       filteredProfiles.forEach(profile => {
@@ -184,7 +187,7 @@ function searchProfile() {
   if (matchedProfile) {
       window.location.href = `/member/${matchedProfile.upn}`;
   } else {
-      alert('Member Not Found.');
+      // alert('Member Not Found.');
   }
 }
 
