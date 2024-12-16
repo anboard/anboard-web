@@ -140,9 +140,10 @@ function handleInput(event) {
 
     if (!query) return;
 
-    const filteredProfiles = userProfiles.filter(profile =>
-        profile.name.toLowerCase().includes(query) || profile.upn.toLowerCase().includes(query)
-    );
+    const filteredProfiles = userProfiles.filter(profile => {
+    if (profile.name)  
+    profile.name.toLowerCase().includes(query) || profile.upn.toLowerCase().includes(query)
+    });
 
     if (filteredProfiles.length > 0) {
         filteredProfiles.forEach(profile => {
