@@ -166,6 +166,7 @@ app.get("/member/:upn", async (req: Request, res: Response) => {
     });
 
     const { memberInfo } = await response.json();
+    console.log(memberInfo)
 
     let member = {
       upn: "string",
