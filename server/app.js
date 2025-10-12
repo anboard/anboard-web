@@ -214,7 +214,6 @@ app.get("/member/:upn", function (req, res) { return __awaiter(void 0, void 0, v
                 return [4 /*yield*/, response.json()];
             case 3:
                 memberInfo = (_a.sent()).memberInfo;
-                console.log(memberInfo);
                 member = {
                     upn: "string",
                     name: "string",
@@ -269,7 +268,6 @@ app.get("/signup", function (req, res) {
     res.render("signup", { title: "Sign Up" });
 });
 app.get(['/news', '/news/:slug', '/events'], function (req, res) {
-    console.log('we get here');
     res.sendFile(node_path_1.default.join(__dirname, 'public/client/index.html'));
 });
 exports.default = app;

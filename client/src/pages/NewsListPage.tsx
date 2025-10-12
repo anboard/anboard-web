@@ -21,14 +21,12 @@ const NewsListPage: React.FC = () => {
       const response = await fetch("/api/newslist");
       const { newsList } = await response.json();
 
-      console.log("smth is fuccing w me");
       setNews(newsList);
     };
 
     fetchNews();
   }, []);
 
-  console.log(news);
   return (
     <div className="alt-bg-white">
       <div className="banner">

@@ -28,7 +28,6 @@ const NewsPage: React.FC = () => {
         
       }
 
-      console.log(article[0]);
       setContent(article[0]);
     };
 

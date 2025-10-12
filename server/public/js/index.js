@@ -208,7 +208,6 @@ document.addEventListener("DOMContentLoaded", function() {
     const nextButton = document.getElementById('nextButton');
 
     if (track && nextButton) {
-      console.log("Carousel initialized");
 
     let currentIndex = 0;
     const cards = document.querySelectorAll('.card');
@@ -345,6 +344,3 @@ function toggleSection(section) {
     videoButton.classList.remove('active');
   }
 }
-
-// member page section
-console.log(userProfiles, "defined here");

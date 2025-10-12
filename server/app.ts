@@ -166,18 +166,7 @@ app.get("/member/:upn", async (req: Request, res: Response) => {
     });
 
     const { memberInfo } = await response.json();
-    console.log(memberInfo)
 
-    let member = {
-      upn: "string",
-      name: "string",
-      date_of_birth: "string",
-      state_of_origin: "string",
-      local_government: "string",
-      post_held: "string",
-      educational_background: "string",
-      pfpUrl: "string",
-    };
     const pfpUrl = memberInfo.pfpUrl;
     const id = memberInfo.id;
     const stationData = memberInfo.stationData;
@@ -223,7 +212,6 @@ app.get("/signup", (req: Request, res: Response) => {
 
 
 app.get(['/news', '/news/:slug', '/events'], (req, res) => {
-  console.log('we get here')
   res.sendFile(path.join(__dirname, 'public/client/index.html'));
 });
 

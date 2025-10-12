@@ -18,7 +18,6 @@ const Header: React.FC = () => {
         !aboutDropdownRef.current?.contains(event.target as Node) &&
         !membershipDropdownRef.current?.contains(event.target as Node)
       ) {
-        console.log(activeDropdown)
         setActiveDropdown(null);
       }
     };
